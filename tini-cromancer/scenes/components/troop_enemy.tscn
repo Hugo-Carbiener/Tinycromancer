@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://donc5kigdxi71"]
+
+[ext_resource type="Script" uid="uid://bbgwe3ab56xsc" path="res://scripts/troop/Troop.gd" id="1_33c0t"]
+[ext_resource type="Texture2D" uid="uid://c0gtni3dum3iu" path="res://sprites/assets_placeholder.png" id="2_018ud"]
+[ext_resource type="Script" uid="uid://d32el1d16ipa2" path="res://scripts/troop/CombatModule.gd" id="3_yr50l"]
+[ext_resource type="Script" uid="uid://cfv33gebg2a7j" path="res://scripts/troop/MovementModule.gd" id="4_gdjlk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ublrq"]
+atlas = ExtResource("2_018ud")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2lkha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ublrq")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ublrq"]
+radius = 5.0
+
+[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("combat_module", "movement_module")]
+script = ExtResource("1_33c0t")
+combat_module = NodePath("CombatModule")
+movement_module = NodePath("MovementModule")
+faction = 1
+
+[node name="Animated sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2lkha")
+animation = &"Idle"
+offset = Vector2(0, -8)
+flip_h = true
+
+[node name="CombatModule" type="Node2D" parent="."]
+script = ExtResource("3_yr50l")
+max_health = 20
+attack_cooldown_duration = 1.0
+attack_damage = 500
+attack_range = 11
+metadata/_custom_type_script = "uid://d32el1d16ipa2"
+
+[node name="MovementModule" type="Node2D" parent="." node_paths=PackedStringArray("troop", "navigation_agent")]
+script = ExtResource("4_gdjlk")
+troop = NodePath("..")
+movement_speed = 1000
+navigation_agent = NodePath("../NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ublrq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1

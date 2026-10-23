@@ -11,9 +11,14 @@ enum STATES {
 func get_state_from_id(state : STATES, troop : Troop):
 	match(state):
 		STATES.IDLE: return IdleState.new(troop)
+		STATES.ADVANCE: return AdvanceState.new(troop)
+		STATES.RETREAT: return RetreatState.new(troop)
+		STATES.ATTACK: return AttackState.new(troop)
+		STATES.DEAD: return DeadState.new(troop)
 
 func get_state_from_context(troop : Troop) -> STATES:
-	if troop.is_dead(): return STATES.DEAD
+	if troop.is_dead(): 
+		return STATES.DEAD
 	
 	if !troop.target:
 		if CombatManager.instance.get_alive_opponents(troop.faction).is_empty():

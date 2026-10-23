@@ -13,14 +13,15 @@ func setup():
 func reset():
 	attack_cooldown = attack_cooldown_duration
 
-func process(delta : float):
+func process(delta : float, target : Troop):
 	attack_cooldown -= delta
 	if attack_cooldown <= 0.:
-		execute_attack()
+		execute_attack(target)
 		attack_cooldown = attack_cooldown_duration - abs(attack_cooldown) # keep track of overhead time
 
-func execute_attack():
-	#troop.target.combat_module.take_damage(attack_damage)
+func execute_attack(target : Troop):
+	print("attack target of " + str(target.faction))
+	target.combat_module.take_damage(attack_damage)
 
 func take_damage(damage_amount : int):
 	health -= damage_amount

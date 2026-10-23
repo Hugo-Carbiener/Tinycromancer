@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://pwbbiwor0jd8"]
+[gd_scene load_steps=8 format=3 uid="uid://pwbbiwor0jd8"]
 
 [ext_resource type="Script" uid="uid://bbgwe3ab56xsc" path="res://scripts/troop/Troop.gd" id="1_k10xu"]
 [ext_resource type="Texture2D" uid="uid://c0gtni3dum3iu" path="res://sprites/assets_placeholder.png" id="2_6ngdk"]
@@ -20,7 +20,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Troop" type="Node2D" node_paths=PackedStringArray("combat_module", "movement_module")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ublrq"]
+radius = 5.0
+
+[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("combat_module", "movement_module")]
 script = ExtResource("1_k10xu")
 combat_module = NodePath("CombatModule")
 movement_module = NodePath("MovementModule")
@@ -32,13 +35,23 @@ offset = Vector2(0, -8)
 
 [node name="CombatModule" type="Node2D" parent="."]
 script = ExtResource("3_6ngdk")
-max_health = null
-attack_cooldown_duration = null
-attack_damage = null
-attack_range = null
+max_health = 20
+attack_cooldown_duration = 1.0
+attack_damage = 5
+attack_range = 11
 metadata/_custom_type_script = "uid://d32el1d16ipa2"
 
-[node name="MovementModule" type="Node2D" parent="."]
+[node name="MovementModule" type="Node2D" parent="." node_paths=PackedStringArray("troop", "navigation_agent")]
 script = ExtResource("4_ublrq")
-movement_speed = null
-metadata/_custom_type_script = "uid://cfv33gebg2a7j"
+troop = NodePath("..")
+movement_speed = 1000
+navigation_agent = NodePath("../NavigationAgent2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_ublrq")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 3.0
+target_desired_distance = 3.0
+path_postprocessing = 1
