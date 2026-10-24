@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmneu2br407fk"]
+
+[ext_resource type="Texture2D" uid="uid://cfgylxr5ls1p0" path="res://sprites/UI_currency-icon.png" id="1_j4uii"]
+
+[node name="Currency icon" type="TextureRect"]
+texture = ExtResource("1_j4uii")
+stretch_mode = 2

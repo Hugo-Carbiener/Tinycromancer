@@ -19,11 +19,16 @@ config/icon="res://icon.svg"
 
 TroopFactory="*res://scripts/generals/TroopFactory.gd"
 SignalBus="*res://scripts/generals/SignalBus.gd"
+AnimationsUtils="*res://scripts/generals/AnimationsUtils.gd"
+Constants="*res://scripts/generals/Constants.gd"
+UserData="*res://scripts/generals/UserData.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
+window/size/mode=2
+window/stretch/mode="canvas_items"
 
 [input]
 
@@ -38,3 +43,4 @@ espace={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true

@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cihjvaf0nbdvx"]
+
+[ext_resource type="FontFile" uid="uid://1a0dtola0qk5" path="res://fonts/Dedicool.ttf" id="1_mowgd"]
+
+[resource]
+font = ExtResource("1_mowgd")
+font_size = 32
+font_color = Color(0.7764706, 0.24705882, 0.75686276, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)

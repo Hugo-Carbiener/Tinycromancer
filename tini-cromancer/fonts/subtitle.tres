@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cwe2mox0o7tm"]
+
+[ext_resource type="FontFile" uid="uid://1a0dtola0qk5" path="res://fonts/Dedicool.ttf" id="1_yqkbg"]
+
+[resource]
+font = ExtResource("1_yqkbg")
+font_color = Color(0.5019608, 0.23137255, 0.52156866, 1)
+outline_size = 8
+outline_color = Color(0.23529412, 0.09019608, 0.24705882, 1)
