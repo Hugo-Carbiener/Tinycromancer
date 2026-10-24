@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://boltdg1o82tb2"]
+[gd_scene load_steps=15 format=4 uid="uid://boltdg1o82tb2"]
 
 [ext_resource type="Script" uid="uid://bgi3cvch00lcw" path="res://scripts/combat/CombatManager.gd" id="1_4l26h"]
 [ext_resource type="Texture2D" uid="uid://dujvb42bpr6gx" path="res://sprites/tilemap.png" id="1_764e3"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://cihjvaf0nbdvx" path="res://fonts/title.tres" id="5_vcae8"]
 [ext_resource type="LabelSettings" uid="uid://cwe2mox0o7tm" path="res://fonts/subtitle.tres" id="6_osi8t"]
 [ext_resource type="Script" uid="uid://fc3m8qimcpgh" path="res://scripts/ui/UI.gd" id="7_4gnb8"]
+[ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui/large-texture-button.tscn" id="7_8we11"]
 [ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="7_osi8t"]
 [ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="9_sa5k0"]
 
@@ -118,6 +119,18 @@ layout_mode = 2
 theme_override_constants/separation = -9
 alignment = 1
 
+[node name="Button container" type="HBoxContainer" parent="CanvasLayer/WinScreen/Winscreen padding/Page container"]
+layout_mode = 2
+alignment = 1
+
+[node name="Next level button" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container" instance=ExtResource("7_8we11")]
+layout_mode = 2
+signal_on_button_pressed = "next_level_clicked"
+
+[node name="Submit text" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button/Text container" index="0"]
+text = " Next 
+battle"
+
 [node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -144,3 +157,5 @@ theme_override_constants/margin_top = 2
 layout_mode = 2
 text = "999"
 label_settings = ExtResource("9_sa5k0")
+
+[editable path="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button"]
