@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5ghoydk6ffix"]
+
+[ext_resource type="Texture2D" uid="uid://ctsaa7jc2xkq3" path="res://sprites/UI_large-button.png" id="1_6wdrr"]
+[ext_resource type="Texture2D" uid="uid://1k7dd3icajqv" path="res://sprites/UI_pressed-large-button.png" id="2_th1xb"]
+[ext_resource type="Script" uid="uid://c4u5kp76pxotv" path="res://scripts/ui/components/BaseTextureButton.gd" id="3_rxa65"]
+[ext_resource type="LabelSettings" uid="uid://cwe2mox0o7tm" path="res://fonts/subtitle.tres" id="4_ob440"]
+
+[node name="Large button" type="TextureButton" node_paths=PackedStringArray("text_margin")]
+self_modulate = Color(0.63529414, 0.30588236, 0.6862745, 1)
+offset_right = 80.0
+offset_bottom = 32.0
+texture_normal = ExtResource("1_6wdrr")
+texture_pressed = ExtResource("2_th1xb")
+stretch_mode = 5
+script = ExtResource("3_rxa65")
+text_margin = NodePath("Text container")
+top_margin_default = 7
+top_margin_pressed = 11
+
+[node name="Text container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Submit text" type="Label" parent="Text container"]
+layout_mode = 2
+text = "Submit"
+label_settings = ExtResource("4_ob440")
+horizontal_alignment = 1
+vertical_alignment = 1

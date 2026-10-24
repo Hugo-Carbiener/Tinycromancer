@@ -103,9 +103,9 @@ func is_back_to_base(alive_troops : Array[Troop]):
 		if alive_troops[i].current_state.get_state_id() != StateMachine.STATES.IDLE:
 			return false
 	return true
-	
 
 func win_fight():
+	UserData.souls += enemies.size()
 	SignalBus.on_win.emit()
 	
 func loose_fight():
