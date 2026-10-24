@@ -3,6 +3,7 @@ class_name Troop extends CharacterBody2D
 @export_group("Modules")
 @export var combat_module : CombatModule
 @export var movement_module : MovementModule
+@export var animation_module : AnimationModule
 
 var target : Troop
 var faction : CombatManager.FACTIONS
@@ -12,6 +13,7 @@ var state_machine : StateMachine = StateMachine.new()
 func _ready() -> void:
 	combat_module.setup()
 	movement_module.setup()
+	animation_module.setup()
 
 func is_dead() -> bool:
 	return combat_module.health <= 0

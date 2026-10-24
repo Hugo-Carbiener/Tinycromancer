@@ -24,10 +24,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ublrq"]
 radius = 5.0
 
-[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("combat_module", "movement_module")]
+[node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("combat_module", "movement_module", "animation_module")]
 script = ExtResource("1_k10xu")
 combat_module = NodePath("CombatModule")
 movement_module = NodePath("MovementModule")
+animation_module = NodePath("Animated sprite")
 
 [node name="Animated sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lkha")
