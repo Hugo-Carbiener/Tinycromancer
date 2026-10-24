@@ -1,11 +1,7 @@
 class_name IdleState extends State
 
-func _init(_troop : Troop):
-	super(_troop)
-
-func on_state_enter(_target : Troop):
-	#TODO switch to idle animation
-	pass
+func _init(_troop : Troop, animation : String):
+	super(_troop, animation)
 
 func on_state_exit(_target : Troop):
 	pass

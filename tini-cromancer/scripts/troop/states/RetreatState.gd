@@ -2,8 +2,8 @@ class_name RetreatState extends State
 
 var is_retreated : bool = false
 
-func _init(_troop : Troop):
-	super(_troop)
+func _init(_troop : Troop, animation : String):
+	super(_troop, animation)
 
 func on_state_enter(_target : Troop):
 	troop.movement_module.set_destination(troop.movement_module.initial_position)

@@ -1,10 +1,10 @@
 class_name DeadState extends State
 
-func _init(_troop : Troop):
-	super(_troop)
+func _init(_troop : Troop, animation : String):
+	super(_troop, animation)
 
 func on_state_enter(_target : Troop):
-	troop.visible = false
+	super(troop)
 	# TODO remove hitbox
 
 func on_state_exit(_target : Troop):
