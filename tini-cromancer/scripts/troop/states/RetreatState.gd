@@ -5,7 +5,17 @@ var is_retreated : bool = false
 func _init(_troop : Troop, animation : String):
 	super(_troop, animation)
 
+func get_next_state() -> StateMachine.STATES:
+	if troop.is_dead(): 
+		return StateMachine.STATES.DEAD
+	
+	if troop.movement_module.navigation_agent.is_target_reached():
+		return StateMachine.STATES.IDLE
+	 
+	return StateMachine.STATES.RETREAT
+
 func on_state_enter(_target : Troop):
+	super(_target)
 	troop.movement_module.set_destination(troop.movement_module.initial_position)
 
 func on_state_exit(_target : Troop):

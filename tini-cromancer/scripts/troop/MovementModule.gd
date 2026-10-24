@@ -9,7 +9,7 @@ var troop : Troop
 ## @export var weight : int$ 
 var initial_position : Vector2
 
-func setup():	
+func setup():
 	troop = get_parent()
 	initial_position = global_position
 
@@ -24,5 +24,6 @@ func process(delta : float, target : Troop):
 		set_destination(target.global_position)
 	if !navigation_agent.is_target_reached():
 		var direction = (navigation_agent.get_next_path_position() - global_position).normalized()
+		troop.animation_module.flip_h = direction.x < 0
 		troop.velocity = direction * movement_speed * delta
 		troop.move_and_slide()

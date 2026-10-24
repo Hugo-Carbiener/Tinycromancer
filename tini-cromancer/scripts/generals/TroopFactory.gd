@@ -8,9 +8,6 @@ enum TROOPS {
 	ARCHER
 	}
 
-
-
-
 var troop_scenes_by_id : Dictionary[TROOPS, PackedScene] = {
 	TROOPS.BASE_TROOP: base_troop_scene,
 	TROOPS.ARCHER: archer_troop_scene

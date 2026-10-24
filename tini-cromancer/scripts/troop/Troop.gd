@@ -10,7 +10,6 @@ var faction : CombatManager.FACTIONS
 var current_state : State = IdleState.new(self, "idle")
 var state_machine : StateMachine = StateMachine.new()
 
-
 func _ready() -> void:
 	combat_module.setup()
 	movement_module.setup()
@@ -19,12 +18,17 @@ func _ready() -> void:
 func is_dead() -> bool:
 	return combat_module.health <= 0
 
+func is_marked_as_dead() -> bool:
+	return current_state.get_state_id() == StateMachine.STATES.DEAD
+
 func is_target_in_range() -> bool:
 	if !target: return false
 	return global_position.distance_to(target.global_position) <= combat_module.attack_range
 
 func get_closest_target() -> Troop:
 	var opponents = CombatManager.instance.get_alive_opponents(faction)
+	if opponents.is_empty(): return null
+	
 	var distance = 10000.0
 	var current_target = null;
 	for opponent in opponents:
@@ -35,18 +39,17 @@ func get_closest_target() -> Troop:
 	return current_target
 
 func check_target():
-	if target == null || target.is_dead():
+	if target == null || target.is_dead() || target.is_marked_as_dead():
 		target = get_closest_target()
 		if target == null: return
 		
 		movement_module.reset(target)
 
 func check_state():
-	var new_state_id = state_machine.get_state_from_context(self)
+	var new_state_id = current_state.get_next_state()
 	if new_state_id == current_state.get_state_id():
 		return
 	
-	print("Troop " + str(self) + " switch to " + StateMachine.STATES.keys()[new_state_id])
 	current_state.on_state_exit(target)
 	current_state = state_machine.get_state_from_id(new_state_id, self)
 	current_state.on_state_enter(target)

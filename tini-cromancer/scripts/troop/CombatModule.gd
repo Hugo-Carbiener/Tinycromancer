@@ -7,6 +7,7 @@ class_name CombatModule extends Node2D
 var troop : Troop
 var health : int
 var attack_cooldown : float
+var is_blinking : bool = false
 
 func setup():
 	troop = get_parent()
@@ -23,14 +24,23 @@ func process(delta : float, target : Troop):
 
 func execute_attack(target : Troop):
 	await dispatch_attack()
-	target.combat_module.take_damage(attack_damage)
-	print("attack target of " + str(target.faction) + " | target health goes to " + str(target.combat_module.health))
+	if !target.is_dead():
+		target.combat_module.take_damage(attack_damage)
 
 func dispatch_attack():
 	troop.animation_module.play("hit")
-	await troop.animation_module.animation_finished
-	troop.animation_module.play("idle")
 
 func take_damage(damage_amount : int):
 	health -= damage_amount
-	# TODO blink sprite
+	await dispatch_damage()
+	if health <= 0:
+		on_death()
+
+func dispatch_damage():
+	if is_blinking: return
+	is_blinking = true
+	await AnimationsUtils.blink_sprite(troop.animation_module)
+	is_blinking = false
+
+func on_death():
+	CombatManager.instance.on_troop_death(troop)
