@@ -17,9 +17,11 @@ func get_next_state() -> StateMachine.STATES:
 func on_state_enter(_target : Troop):
 	super(_target)
 	troop.movement_module.set_destination(troop.movement_module.initial_position)
+	troop.movement_module.collision_shape.disabled = true
+
 
 func on_state_exit(_target : Troop):
-	pass
+	troop.movement_module.collision_shape.disabled = false
 
 func get_state_id() -> StateMachine.STATES:
 	return StateMachine.STATES.RETREAT
