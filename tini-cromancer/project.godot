@@ -18,6 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 TroopFactory="*res://scripts/generals/TroopFactory.gd"
+SignalBus="*res://scripts/generals/SignalBus.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
 
 [input]
 
