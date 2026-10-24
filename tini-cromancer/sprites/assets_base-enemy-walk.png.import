@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bponnwe2uerdb"
-path="res://.godot/imported/assets_hit-no-cap.png-fbf2405e19ba20aca905cf439b003631.ctex"
+uid="uid://rjn31plebcg"
+path="res://.godot/imported/assets_base-enemy-walk.png-8097b013ecaadc9f8ea6cd634300ddfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/assets_hit-no-cap.png"
-dest_files=["res://.godot/imported/assets_hit-no-cap.png-fbf2405e19ba20aca905cf439b003631.ctex"]
+source_file="res://sprites/assets_base-enemy-walk.png"
+dest_files=["res://.godot/imported/assets_base-enemy-walk.png-8097b013ecaadc9f8ea6cd634300ddfc.ctex"]
 
 [params]
 

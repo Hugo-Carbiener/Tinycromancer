@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cukyo783ygak0"
-path="res://.godot/imported/assets_walk-no-cap.png-52401360a0dee32c1942c6cf8cfa8ef3.ctex"
+uid="uid://bhsl3yry2qeex"
+path="res://.godot/imported/assets_lich-spell-2.png-069f0118188ee86ed6db7cd56aeee326.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/assets_walk-no-cap.png"
-dest_files=["res://.godot/imported/assets_walk-no-cap.png-52401360a0dee32c1942c6cf8cfa8ef3.ctex"]
+source_file="res://sprites/assets_lich-spell-2.png"
+dest_files=["res://.godot/imported/assets_lich-spell-2.png-069f0118188ee86ed6db7cd56aeee326.ctex"]
 
 [params]
 

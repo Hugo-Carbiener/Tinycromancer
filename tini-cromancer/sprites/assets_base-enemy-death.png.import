@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnv8ncwyotatv"
-path="res://.godot/imported/assets_death-no-cap.png-f266ef89e8527a443a6f919ce0ed7a8c.ctex"
+uid="uid://36j20a6ajpre"
+path="res://.godot/imported/assets_base-enemy-death.png-530adb7475dea99806ad75c30e5df61c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/assets_death-no-cap.png"
-dest_files=["res://.godot/imported/assets_death-no-cap.png-f266ef89e8527a443a6f919ce0ed7a8c.ctex"]
+source_file="res://sprites/assets_base-enemy-death.png"
+dest_files=["res://.godot/imported/assets_base-enemy-death.png-530adb7475dea99806ad75c30e5df61c.ctex"]
 
 [params]
 
