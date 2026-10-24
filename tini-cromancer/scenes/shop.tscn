@@ -1,17 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqja72kf7bd2v"]
+[gd_scene load_steps=8 format=3 uid="uid://dqja72kf7bd2v"]
 
-[ext_resource type="Script" uid="uid://bgi3cvch00lcw" path="res://scripts/combat/CombatManager.gd" id="1_heatd"]
 [ext_resource type="Script" uid="uid://bwx3yv01dmx70" path="res://scripts/ui/WinScreen.gd" id="4_24it5"]
 [ext_resource type="LabelSettings" uid="uid://cihjvaf0nbdvx" path="res://fonts/title.tres" id="5_7mqwv"]
 [ext_resource type="LabelSettings" uid="uid://cwe2mox0o7tm" path="res://fonts/subtitle.tres" id="6_gobkm"]
 [ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui/large-texture-button.tscn" id="7_j14q8"]
-[ext_resource type="Script" path="res://scripts/ui/UI.gd" id="8_5u241"]
+[ext_resource type="Script" uid="uid://fc3m8qimcpgh" path="res://scripts/ui/UI.gd" id="8_5u241"]
 [ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="9_pqync"]
 [ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="10_yuijs"]
 
-[node name="Shop" type="Node2D" node_paths=PackedStringArray("spawner")]
-script = ExtResource("1_heatd")
-spawner = NodePath("")
+[node name="Shop" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

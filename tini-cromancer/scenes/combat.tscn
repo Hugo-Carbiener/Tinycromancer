@@ -52,7 +52,6 @@ position = Vector2(72, -41)
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("allies_spawn", "enemies_spawn")]
 script = ExtResource("3_aic3r")
-amount = 2
 allies_spawn = NodePath("../Allies spawn")
 enemies_spawn = NodePath("../Enemiess spawn")
 
