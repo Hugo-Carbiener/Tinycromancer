@@ -20,6 +20,9 @@ func get_state_from_context(troop : Troop) -> STATES:
 	if troop.is_dead(): 
 		return STATES.DEAD
 	
+	if troop.current_state.get_state_id() == STATES.RETREAT && (troop.current_state as RetreatState).is_retreated:
+		return STATES.IDLE
+	
 	if !troop.target:
 		if CombatManager.instance.get_alive_opponents(troop.faction).is_empty():
 			return STATES.RETREAT

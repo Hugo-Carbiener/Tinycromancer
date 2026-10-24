@@ -1,5 +1,7 @@
 class_name RetreatState extends State
 
+var is_retreated : bool = false
+
 func _init(_troop : Troop):
 	super(_troop)
 
@@ -14,3 +16,5 @@ func get_state_id() -> StateMachine.STATES:
 
 func process(delta: float, _target : Troop):
 	troop.movement_module.process(delta, null)
+	if troop.movement_module.navigation_agent.is_target_reached():
+		is_retreated = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bbgwe3ab56xsc" path="res://scripts/troop/Troop.gd" id="1_k10xu"]
 [ext_resource type="Texture2D" uid="uid://c0gtni3dum3iu" path="res://sprites/assets_placeholder.png" id="2_6ngdk"]
-[ext_resource type="Script" uid="uid://ci62kk8hja3u5" path="res://scripts/troop/AnimationModule.gd" id="3_2lkha"]
+[ext_resource type="Script" path="res://scripts/troop/AnimationModule.gd" id="3_2lkha"]
 [ext_resource type="Script" uid="uid://d32el1d16ipa2" path="res://scripts/troop/CombatModule.gd" id="3_6ngdk"]
 [ext_resource type="Script" uid="uid://cfv33gebg2a7j" path="res://scripts/troop/MovementModule.gd" id="4_ublrq"]
 
@@ -45,7 +45,7 @@ metadata/_custom_type_script = "uid://d32el1d16ipa2"
 
 [node name="MovementModule" type="Node2D" parent="." node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("4_ublrq")
-movement_speed = 1000
+movement_speed = 5000
 navigation_agent = NodePath("../NavigationAgent2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
