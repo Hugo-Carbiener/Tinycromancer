@@ -1,8 +1,7 @@
 extends Node2D
 
 var titlescreen : PackedScene = preload("res://scenes/title_screen.tscn");
-#var fight : PackedScene = preload("res://scenes/combat.tscn");
-var fight : PackedScene = preload("res://scenes/combat_jow.tscn");
+var fight : PackedScene = preload("res://scenes/combat.tscn");
 var shop : PackedScene = preload("res://scenes/shop.tscn");
 
 func _ready() -> void:
@@ -16,5 +15,4 @@ func open_shop():
 	get_tree().change_scene_to_packed(shop);
 
 func start_fight():
-	print("go fight")
 	get_tree().change_scene_to_packed(fight);

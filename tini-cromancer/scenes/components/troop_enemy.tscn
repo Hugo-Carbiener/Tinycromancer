@@ -308,7 +308,7 @@ role = 2
 
 [node name="Animated sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lkha")
-animation = &"res-loop"
+animation = &"idle"
 offset = Vector2(0, -8)
 script = ExtResource("6_3xfmy")
 

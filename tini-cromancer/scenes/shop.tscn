@@ -1,57 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqja72kf7bd2v"]
+[gd_scene load_steps=3 format=3 uid="uid://dqja72kf7bd2v"]
 
+[ext_resource type="PackedScene" uid="uid://bpggasm03popu" path="res://scenes/ui/currency_display.tscn" id="1_xfvoa"]
 [ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui/large-texture-button.tscn" id="7_j14q8"]
-[ext_resource type="Script" path="res://scripts/ui/UI.gd" id="8_5u241"]
-[ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="9_pqync"]
-[ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="10_yuijs"]
 
 [node name="Shop" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="UI" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-script = ExtResource("8_5u241")
-currency_amount_label = NodePath("HBoxContainer/Text margin/Currency amount")
-currency_icon = NodePath("HBoxContainer/Currency icon")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Currency icon" parent="CanvasLayer/UI/HBoxContainer" instance=ExtResource("9_pqync")]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 2
 
-[node name="Text margin" type="MarginContainer" parent="CanvasLayer/UI/HBoxContainer"]
+[node name="Currency display" parent="CanvasLayer/UI/VBoxContainer" instance=ExtResource("1_xfvoa")]
 layout_mode = 2
-theme_override_constants/margin_top = 2
 
-[node name="Currency amount" type="Label" parent="CanvasLayer/UI/HBoxContainer/Text margin"]
+[node name="Next level button" parent="CanvasLayer/UI/VBoxContainer" instance=ExtResource("7_j14q8")]
 layout_mode = 2
-text = "999"
-label_settings = ExtResource("10_yuijs")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-offset_left = 533.0
-offset_top = 281.0
-offset_right = 613.0
-offset_bottom = 345.0
-
-[node name="Button container" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Next level button" parent="CanvasLayer/MarginContainer/Button container" instance=ExtResource("7_j14q8")]
-layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
 signal_on_button_pressed = "next_level_clicked"
 
-[node name="Submit text" parent="CanvasLayer/MarginContainer/Button container/Next level button/Text container" index="0"]
+[node name="Submit text" parent="CanvasLayer/UI/VBoxContainer/Next level button/Text container" index="0"]
 text = " Next 
 battle"
 
-[editable path="CanvasLayer/MarginContainer/Button container/Next level button"]
+[editable path="CanvasLayer/UI/VBoxContainer/Next level button"]

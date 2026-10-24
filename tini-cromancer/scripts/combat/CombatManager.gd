@@ -27,16 +27,19 @@ func build_level():
 	spend_rest_currency()
 	spawner.ally_troops = UserData.troops
 	spawner.enemy_troops = set_enemy_troops()
+	spawner.spawn_troops()
 	
 func spend_rest_currency():
-	if UserData.souls > 0:
-		if not UserData.troops.has(TroopFactory.ROLES.BASE_TROOP):
-			UserData.troops[TroopFactory.ROLES.BASE_TROOP] = UserData.souls
-		else:
-			UserData.troops[TroopFactory.ROLES.BASE_TROOP] += UserData.souls
+	if UserData.souls <= 0: return
+	
+	if not UserData.troops.has(TroopFactory.ROLES.BASE_TROOP):
+		UserData.troops[TroopFactory.ROLES.BASE_TROOP] = UserData.souls
+	else:
+		UserData.troops[TroopFactory.ROLES.BASE_TROOP] += UserData.souls
+	SignalBus.currency_amount_updated.emit(UserData.souls, 0)
 	UserData.souls = 0
 		
-func set_ennemi_troops() -> Dictionary[TroopFactory.TROOPS, int]:
+func set_enemy_troops() -> Dictionary[TroopFactory.ROLES, int]:
 	#TODO : améliorer avec les nouvelles troop
 	var enemy_troops : Dictionary[TroopFactory.ROLES, int] = {TroopFactory.ROLES.ENEMY_BASE_TROOP : UserData.level_number * 10}
 	return enemy_troops
@@ -63,7 +66,6 @@ func on_troop_death(troop : Troop):
 
 func start_fight():
 	if !is_fight_started:
-		spawner.spawn_troops()
 		is_fight_started = true
 		SignalBus.on_battle_started.emit()
 	
@@ -132,6 +134,7 @@ func is_back_to_base(alive_troops : Array[Troop]):
 	return true
 
 func win_fight():
+	SignalBus.currency_amount_updated.emit(UserData.souls, UserData.souls + enemies.size())
 	UserData.souls += enemies.size()
 	await lich_manager.on_fight_win()
 	SignalBus.on_win.emit()
@@ -149,6 +152,7 @@ func take_death_into_account():
 func loose_fight():
 	await lich_manager.on_fight_lost()
 	SignalBus.on_loss.emit()
+	get_tree().quit()
 
 func get_opponents_in_state(faction : FACTIONS, state: StateMachine.STATES) -> Array[Troop]:
 	var opps = enemies if faction == FACTIONS.ALLIES else allies

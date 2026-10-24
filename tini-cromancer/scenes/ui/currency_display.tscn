@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpggasm03popu"]
+
+[ext_resource type="Script" uid="uid://mee8bqiuypbp" path="res://scripts/ui/components/CurrencyDisplay.gd" id="1_hwlup"]
+[ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="1_owlkl"]
+[ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="2_hwlup"]
+
+[node name="Currency display" type="MarginContainer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]
+script = ExtResource("1_hwlup")
+currency_amount_label = NodePath("HBoxContainer/Text margin/Currency amount")
+currency_icon = NodePath("HBoxContainer/Currency icon")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Currency icon" parent="HBoxContainer" instance=ExtResource("1_owlkl")]
+layout_mode = 2
+
+[node name="Text margin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="Currency amount" type="Label" parent="HBoxContainer/Text margin"]
+layout_mode = 2
+text = "999"
+label_settings = ExtResource("2_hwlup")

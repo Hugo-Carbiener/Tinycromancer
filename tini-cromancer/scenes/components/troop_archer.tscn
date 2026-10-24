@@ -148,6 +148,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_asyfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gphht")
 }],
 "loop": false,
 "name": &"hit",
@@ -212,7 +215,7 @@ role = 1
 
 [node name="Animated sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lkha")
-animation = &"walk"
+animation = &"hit"
 offset = Vector2(0, -8)
 script = ExtResource("6_8jrqp")
 

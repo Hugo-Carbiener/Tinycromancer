@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://boltdg1o82tb2"]
+[gd_scene load_steps=37 format=4 uid="uid://boltdg1o82tb2"]
 
 [ext_resource type="Script" uid="uid://bgi3cvch00lcw" path="res://scripts/combat/CombatManager.gd" id="1_4l26h"]
 [ext_resource type="Texture2D" uid="uid://dujvb42bpr6gx" path="res://sprites/tilemap.png" id="1_764e3"]
@@ -8,10 +8,9 @@
 [ext_resource type="LabelSettings" uid="uid://cwe2mox0o7tm" path="res://fonts/subtitle.tres" id="6_osi8t"]
 [ext_resource type="Script" uid="uid://fc3m8qimcpgh" path="res://scripts/ui/UI.gd" id="7_4gnb8"]
 [ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui/large-texture-button.tscn" id="7_8we11"]
-[ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="7_osi8t"]
-[ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="9_sa5k0"]
 [ext_resource type="Texture2D" uid="uid://dka40be4qxpvw" path="res://sprites/assets_lich-idle.png" id="11_hmy61"]
 [ext_resource type="Texture2D" uid="uid://8haheuix2qg8" path="res://sprites/assets_lich-spell.png" id="12_0qyji"]
+[ext_resource type="PackedScene" uid="uid://bpggasm03popu" path="res://scenes/ui/currency_display.tscn" id="13_hmy61"]
 [ext_resource type="Texture2D" uid="uid://bhsl3yry2qeex" path="res://sprites/assets_lich-spell-2.png" id="13_xkyey"]
 [ext_resource type="Script" uid="uid://c21uihntx4y80" path="res://scripts/combat/LichManager.gd" id="14_0qyji"]
 
@@ -192,9 +191,6 @@ script = ExtResource("3_aic3r")
 ally_troops = Dictionary[int, int]({
 0: 15
 })
-ennemy_troops = Dictionary[int, int]({
-0: 50
-})
 allies_spawn = NodePath("../Allies spawn")
 enemies_spawn = NodePath("../Enemiess spawn")
 
@@ -220,12 +216,46 @@ position = Vector2(72, -2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("hint_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("7_4gnb8")
+hint_label = NodePath("VBoxContainer/Hint text padding/Hint label")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 2
+
+[node name="Currency display" parent="CanvasLayer/UI/VBoxContainer" instance=ExtResource("13_hmy61")]
+layout_mode = 2
+
+[node name="Hint text padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 50
+
+[node name="Hint label" type="Label" parent="CanvasLayer/UI/VBoxContainer/Hint text padding"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Press 'space' to start the battle"
+label_settings = ExtResource("6_osi8t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="WinScreen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("content_title", "soul_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.5568628)
 script = ExtResource("4_p71o4")
 content_title = NodePath("Winscreen padding/Page container/Page content container/Label")
@@ -287,57 +317,10 @@ alignment = 1
 
 [node name="Next level button" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container" instance=ExtResource("7_8we11")]
 layout_mode = 2
-signal_on_button_pressed = "next_level_clicked"
+signal_on_button_pressed = "shop_clicked"
 
 [node name="Submit text" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button/Text container" index="0"]
 text = " Next 
 battle"
-
-[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon", "hint_label")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-script = ExtResource("7_4gnb8")
-currency_amount_label = NodePath("VBoxContainer/HBoxContainer/Text margin/Currency amount")
-currency_icon = NodePath("VBoxContainer/HBoxContainer/Currency icon")
-hint_label = NodePath("VBoxContainer/Hint text padding/Hint label")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Currency icon" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer" instance=ExtResource("7_osi8t")]
-layout_mode = 2
-
-[node name="Text margin" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 2
-
-[node name="Currency amount" type="Label" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer/Text margin"]
-layout_mode = 2
-text = "999"
-label_settings = ExtResource("9_sa5k0")
-
-[node name="Hint text padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_bottom = 50
-
-[node name="Hint label" type="Label" parent="CanvasLayer/UI/VBoxContainer/Hint text padding"]
-layout_mode = 2
-size_flags_vertical = 8
-text = "Press 'space' to start the battle"
-label_settings = ExtResource("6_osi8t")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [editable path="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button"]
