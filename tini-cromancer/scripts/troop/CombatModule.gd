@@ -20,8 +20,9 @@ func process(delta : float, target : Troop):
 		attack_cooldown = attack_cooldown_duration - abs(attack_cooldown) # keep track of overhead time
 
 func execute_attack(target : Troop):
-	print("attack target of " + str(target.faction))
 	target.combat_module.take_damage(attack_damage)
+	print("attack target of " + str(target.faction) + " | target health goes to " + str(target.combat_module.health))
+
 
 func take_damage(damage_amount : int):
 	health -= damage_amount

@@ -5,11 +5,11 @@ class_name Troop extends CharacterBody2D
 @export var movement_module : MovementModule
 
 var target : Troop
-@export var faction : CombatManager.FACTIONS
+var faction : CombatManager.FACTIONS
 var current_state : State = IdleState.new(self)
 var state_machine : StateMachine = StateMachine.new()
 
-func setup():
+func _ready() -> void:
 	combat_module.setup()
 	movement_module.setup()
 
@@ -43,6 +43,7 @@ func check_state():
 	if new_state_id == current_state.get_state_id():
 		return
 	
+	print("Troop " + str(self) + " switch to " + StateMachine.STATES.keys()[new_state_id])
 	current_state.on_state_exit(target)
 	current_state = state_machine.get_state_from_id(new_state_id, self)
 	current_state.on_state_enter(target)

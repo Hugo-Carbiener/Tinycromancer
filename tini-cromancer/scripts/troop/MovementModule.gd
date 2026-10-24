@@ -1,12 +1,13 @@
 class_name MovementModule extends Node2D
 
-@export var troop : Troop
+var troop : Troop
 @export var movement_speed : int
 @export var navigation_agent : NavigationAgent2D
 ## @export var weight : int$ 
 var initial_position : Vector2
 
-func setup():
+func setup():	
+	troop = get_parent()
 	initial_position = global_position
 
 func set_destination(destination : Vector2):

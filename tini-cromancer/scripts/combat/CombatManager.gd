@@ -76,10 +76,10 @@ func check_troop_states():
 	var max_troop_amount = max(allies.size(), enemies.size())
 	for i in range(max_troop_amount):
 		if allies.size() > i:
-			if allies[i].is_dead(): continue
+			if enemies[i].current_state.get_state_id() == StateMachine.STATES.DEAD: continue
 
 			allies[i].check_state()
 		if enemies.size() > i:
-			if enemies[i].is_dead(): continue
+			if enemies[i].current_state.get_state_id() == StateMachine.STATES.DEAD: continue
 
 			enemies[i].check_state()
