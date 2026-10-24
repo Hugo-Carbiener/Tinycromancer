@@ -10,6 +10,7 @@ var faction : CombatManager.FACTIONS
 var current_state : State = IdleState.new(self, "idle")
 var state_machine : StateMachine = StateMachine.new()
 
+
 func _ready() -> void:
 	combat_module.setup()
 	movement_module.setup()

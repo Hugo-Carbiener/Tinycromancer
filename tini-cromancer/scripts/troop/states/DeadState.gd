@@ -5,7 +5,7 @@ func _init(_troop : Troop, animation : String):
 
 func on_state_enter(_target : Troop):
 	super(troop)
-	# TODO remove hitbox
+	troop.movement_module.collision_shape.disabled = true
 
 func on_state_exit(_target : Troop):
 	pass
