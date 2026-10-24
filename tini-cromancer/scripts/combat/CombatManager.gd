@@ -26,7 +26,7 @@ func build_level():
 	
 func set_ennemi_troops():
 	#TODO : améliorer avec les nouvelles troop
-	return {TroopFactory.TROOPS.ENEMY_BASE_TROOP : UserData.level * 10}
+	return {TroopFactory.TROOPS.ENEMY_BASE_TROOP : UserData.level_number * 10}
 
 func register_troop(troop : Troop):
 	match (troop.faction):

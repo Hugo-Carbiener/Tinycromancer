@@ -7,7 +7,7 @@ var shop : PackedScene = preload("res://scenes/shop.tscn");
 
 func _ready() -> void:
 	SignalBus.shop_clicked.connect(open_shop);
-	SignalBus.next_encounter_clicked.connect(start_fight);
+	SignalBus.next_level_clicked.connect(start_fight);
 
 func menu():
 	get_tree().change_scene_to_packed(titlescreen);
