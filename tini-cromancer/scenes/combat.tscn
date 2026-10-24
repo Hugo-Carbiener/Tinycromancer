@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://boltdg1o82tb2"]
+[gd_scene load_steps=14 format=4 uid="uid://boltdg1o82tb2"]
 
 [ext_resource type="Script" uid="uid://bgi3cvch00lcw" path="res://scripts/combat/CombatManager.gd" id="1_4l26h"]
 [ext_resource type="Texture2D" uid="uid://dujvb42bpr6gx" path="res://sprites/tilemap.png" id="1_764e3"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" uid="uid://bwx3yv01dmx70" path="res://scripts/ui/WinScreen.gd" id="4_p71o4"]
 [ext_resource type="LabelSettings" uid="uid://cihjvaf0nbdvx" path="res://fonts/title.tres" id="5_vcae8"]
 [ext_resource type="LabelSettings" uid="uid://cwe2mox0o7tm" path="res://fonts/subtitle.tres" id="6_osi8t"]
+[ext_resource type="Script" uid="uid://fc3m8qimcpgh" path="res://scripts/ui/UI.gd" id="7_4gnb8"]
+[ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="7_osi8t"]
+[ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="9_sa5k0"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_4l26h"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -114,3 +117,30 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = -9
 alignment = 1
+
+[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("7_4gnb8")
+currency_amount_label = NodePath("HBoxContainer/Text margin/Currency amount")
+currency_icon = NodePath("HBoxContainer/Currency icon")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Currency icon" parent="CanvasLayer/UI/HBoxContainer" instance=ExtResource("7_osi8t")]
+layout_mode = 2
+
+[node name="Text margin" type="MarginContainer" parent="CanvasLayer/UI/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="Currency amount" type="Label" parent="CanvasLayer/UI/HBoxContainer/Text margin"]
+layout_mode = 2
+text = "999"
+label_settings = ExtResource("9_sa5k0")
