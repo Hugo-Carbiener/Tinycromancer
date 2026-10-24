@@ -7,7 +7,10 @@ enum FACTIONS {
 
 static var instance : CombatManager
 
+@export_group("Components")
 @export var spawner : Spawner
+@export var lich_manager : LichManager
+
 var allies : Array[Troop]
 var alive_allies : Array[Troop]
 var enemies : Array[Troop]
@@ -24,7 +27,7 @@ func build_level():
 	spawner.ally_troops = UserData.troops
 	spawner.ennemy_troops = set_ennemi_troops()
 	
-func set_ennemi_troops():
+func set_ennemi_troops() -> Dictionary[TroopFactory.TROOPS, int]:
 	#TODO : améliorer avec les nouvelles troop
 	return {TroopFactory.TROOPS.ENEMY_BASE_TROOP : UserData.level_number * 10}
 
@@ -120,9 +123,11 @@ func is_back_to_base(alive_troops : Array[Troop]):
 
 func win_fight():
 	UserData.souls += enemies.size()
+	await lich_manager.on_fight_win()
 	SignalBus.on_win.emit()
 	
 func loose_fight():
+	await lich_manager.on_fight_lost()
 	SignalBus.on_loss.emit()
 
 func get_opponents_in_state(faction : FACTIONS, state: StateMachine.STATES) -> Array[Troop]:
