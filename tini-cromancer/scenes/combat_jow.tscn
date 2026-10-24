@@ -53,10 +53,11 @@ position = Vector2(72, -41)
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("allies_spawn", "enemies_spawn")]
 script = ExtResource("3_tj4ph")
 ally_troops = Dictionary[int, int]({
-1: 1
+0: 20,
+1: 60
 })
 ennemy_troops = Dictionary[int, int]({
-2: 1
+2: 100
 })
 allies_spawn = NodePath("../Allies spawn")
 enemies_spawn = NodePath("../Enemiess spawn")
@@ -130,11 +131,10 @@ alignment = 1
 
 [node name="Next level button" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container" instance=ExtResource("7_3ssc1")]
 layout_mode = 2
-signal_on_button_pressed = "next_level_clicked"
+signal_on_button_pressed = "shop_clicked"
 
 [node name="Submit text" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button/Text container" index="0"]
-text = " Next 
-battle"
+text = "Shop"
 
 [node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]
 offset_right = 40.0
