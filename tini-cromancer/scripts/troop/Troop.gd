@@ -4,13 +4,14 @@ class_name Troop extends CharacterBody2D
 @export var combat_module : CombatModule
 @export var movement_module : MovementModule
 @export var animation_module : AnimationModule
+@export var role : TroopFactory.ROLES
 
 var target : Troop
 var faction : CombatManager.FACTIONS
 var current_state : State = IdleState.new(self, "idle")
 var state_machine : StateMachine = StateMachine.new()
 
-func _ready() -> void:
+func setup():
 	combat_module.setup()
 	movement_module.setup()
 	animation_module.setup()

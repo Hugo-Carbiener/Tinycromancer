@@ -56,9 +56,7 @@ ally_troops = Dictionary[int, int]({
 0: 20,
 1: 60
 })
-ennemy_troops = Dictionary[int, int]({
-2: 100
-})
+enemy_troops = null
 allies_spawn = NodePath("../Allies spawn")
 enemies_spawn = NodePath("../Enemiess spawn")
 

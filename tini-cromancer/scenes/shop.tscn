@@ -1,91 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://dqja72kf7bd2v"]
+[gd_scene load_steps=5 format=3 uid="uid://dqja72kf7bd2v"]
 
-[ext_resource type="Script" uid="uid://bwx3yv01dmx70" path="res://scripts/ui/WinScreen.gd" id="4_24it5"]
-[ext_resource type="LabelSettings" uid="uid://cihjvaf0nbdvx" path="res://fonts/title.tres" id="5_7mqwv"]
-[ext_resource type="LabelSettings" uid="uid://cwe2mox0o7tm" path="res://fonts/subtitle.tres" id="6_gobkm"]
 [ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui/large-texture-button.tscn" id="7_j14q8"]
-[ext_resource type="Script" uid="uid://fc3m8qimcpgh" path="res://scripts/ui/UI.gd" id="8_5u241"]
+[ext_resource type="Script" path="res://scripts/ui/UI.gd" id="8_5u241"]
 [ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="9_pqync"]
 [ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="10_yuijs"]
 
 [node name="Shop" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="WinScreen" type="ColorRect" parent="CanvasLayer" node_paths=PackedStringArray("content_title", "soul_container")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5568628)
-script = ExtResource("4_24it5")
-content_title = NodePath("Winscreen padding/Page container/Page content container/Label")
-soul_container = NodePath("Winscreen padding/Page container/Page content container/Souls container")
-launch_signal = "on_win"
-
-[node name="Winscreen padding" type="MarginContainer" parent="CanvasLayer/WinScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Page container" type="VBoxContainer" parent="CanvasLayer/WinScreen/Winscreen padding"]
-layout_mode = 2
-theme_override_constants/separation = 50
-
-[node name="Titles container" type="VBoxContainer" parent="CanvasLayer/WinScreen/Winscreen padding/Page container"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Titles container"]
-layout_mode = 2
-text = "Battle won!"
-label_settings = ExtResource("5_7mqwv")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Subtitles" type="Label" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Titles container"]
-layout_mode = 2
-text = "More souls join your army"
-label_settings = ExtResource("6_gobkm")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Page content container" type="HBoxContainer" parent="CanvasLayer/WinScreen/Winscreen padding/Page container"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Page content container"]
-layout_mode = 2
-text = "Souls reaped:"
-label_settings = ExtResource("6_gobkm")
-horizontal_alignment = 1
-
-[node name="Souls container" type="HBoxContainer" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Page content container"]
-layout_mode = 2
-theme_override_constants/separation = -9
-alignment = 1
-
-[node name="Button container" type="HBoxContainer" parent="CanvasLayer/WinScreen/Winscreen padding/Page container"]
-layout_mode = 2
-alignment = 1
-
-[node name="Next level button" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container" instance=ExtResource("7_j14q8")]
-layout_mode = 2
-signal_on_button_pressed = "next_level_clicked"
-
-[node name="Submit text" parent="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button/Text container" index="0"]
-text = " Next 
-battle"
 
 [node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]
 offset_right = 40.0
@@ -114,4 +36,22 @@ layout_mode = 2
 text = "999"
 label_settings = ExtResource("10_yuijs")
 
-[editable path="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_left = 533.0
+offset_top = 281.0
+offset_right = 613.0
+offset_bottom = 345.0
+
+[node name="Button container" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Next level button" parent="CanvasLayer/MarginContainer/Button container" instance=ExtResource("7_j14q8")]
+layout_mode = 2
+signal_on_button_pressed = "next_level_clicked"
+
+[node name="Submit text" parent="CanvasLayer/MarginContainer/Button container/Next level button/Text container" index="0"]
+text = " Next 
+battle"
+
+[editable path="CanvasLayer/MarginContainer/Button container/Next level button"]

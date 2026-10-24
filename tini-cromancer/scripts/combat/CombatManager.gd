@@ -21,12 +21,22 @@ func _ready() -> void:
 	build_level()
 
 func build_level():
+	spend_rest_currency()
 	spawner.ally_troops = UserData.troops
-	spawner.ennemy_troops = set_ennemi_troops()
+	spawner.enemy_troops = set_enemy_troops()
 	
-func set_ennemi_troops():
+func spend_rest_currency():
+	if UserData.souls > 0:
+		if not UserData.troops.has(TroopFactory.ROLES.BASE_TROOP):
+			UserData.troops[TroopFactory.ROLES.BASE_TROOP] = UserData.souls
+		else:
+			UserData.troops[TroopFactory.ROLES.BASE_TROOP] += UserData.souls
+	UserData.souls = 0
+		
+func set_enemy_troops():
 	#TODO : améliorer avec les nouvelles troop
-	return {TroopFactory.TROOPS.ENEMY_BASE_TROOP : UserData.level_number * 10}
+	var enemy_troops : Dictionary[TroopFactory.ROLES, int] = {TroopFactory.ROLES.ENEMY_BASE_TROOP : UserData.level_number * 10}
+	return enemy_troops
 
 func register_troop(troop : Troop):
 	match (troop.faction):
@@ -59,7 +69,6 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if !is_fight_started: return
-	
 	# we make sure all actions are executed before recomputing the targets and states
 	execute_troop_actions(delta)
 	check_troop_targets()
@@ -121,6 +130,16 @@ func is_back_to_base(alive_troops : Array[Troop]):
 func win_fight():
 	UserData.souls += enemies.size()
 	SignalBus.on_win.emit()
+	UserData.level_number +=1
+	take_death_into_account()
+	
+func take_death_into_account():
+	var alive_troops_map : Dictionary[TroopFactory.ROLES, int] = {}
+	for alive_troop in get_alive_opponents(FACTIONS.ENEMIES):
+		if not alive_troops_map.has(alive_troop.role):
+			alive_troops_map[alive_troop.role] = 0
+		alive_troops_map[alive_troop.role] +=1
+	UserData.troops = alive_troops_map
 	
 func loose_fight():
 	SignalBus.on_loss.emit()

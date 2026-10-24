@@ -22,6 +22,7 @@ SignalBus="*res://scripts/generals/SignalBus.gd"
 AnimationsUtils="*res://scripts/generals/AnimationsUtils.gd"
 Constants="*res://scripts/generals/Constants.gd"
 UserData="*res://scripts/generals/UserData.gd"
+SceneManager="*res://scripts/generals/SceneManager.gd"
 
 [display]
 
