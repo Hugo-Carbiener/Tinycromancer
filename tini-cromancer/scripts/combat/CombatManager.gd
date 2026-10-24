@@ -11,6 +11,7 @@ static var instance : CombatManager
 @export var enemies : Array[Troop]
 @export var spawner : Spawner
 var is_fight_started : bool = false
+var shot_id : int = 0
 
 func _ready() -> void:
 	if instance == null:

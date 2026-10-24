@@ -6,3 +6,5 @@ signal on_loss
 
 # button signals
 signal next_level_clicked
+
+signal shot_touched
