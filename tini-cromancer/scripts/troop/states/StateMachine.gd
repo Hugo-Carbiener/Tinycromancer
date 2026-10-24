@@ -10,11 +10,11 @@ enum STATES {
 
 func get_state_from_id(state : STATES, troop : Troop):
 	match(state):
-		STATES.IDLE: return IdleState.new(troop)
-		STATES.ADVANCE: return AdvanceState.new(troop)
-		STATES.RETREAT: return RetreatState.new(troop)
-		STATES.ATTACK: return AttackState.new(troop)
-		STATES.DEAD: return DeadState.new(troop)
+		STATES.IDLE: return IdleState.new(troop, "idle")
+		STATES.ADVANCE: return AdvanceState.new(troop, "walk")
+		STATES.RETREAT: return RetreatState.new(troop, "walk")
+		STATES.ATTACK: return AttackState.new(troop, "idle")
+		STATES.DEAD: return DeadState.new(troop, "death")
 
 func get_state_from_context(troop : Troop) -> STATES:
 	if troop.is_dead(): 
