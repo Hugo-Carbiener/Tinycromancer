@@ -200,7 +200,7 @@ enemies_spawn = NodePath("../Enemiess spawn")
 
 [node name="Lich manager" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(-230, -1)
+position = Vector2(-224, -64)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_knbq0")
 animation = &"idle"
@@ -213,10 +213,10 @@ tile_set = SubResource("TileSet_aic3r")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Allies spawn" type="Node2D" parent="."]
-position = Vector2(-62, -39)
+position = Vector2(-62, 0)
 
 [node name="Enemiess spawn" type="Node2D" parent="."]
-position = Vector2(72, -41)
+position = Vector2(72, -2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -293,31 +293,51 @@ signal_on_button_pressed = "next_level_clicked"
 text = " Next 
 battle"
 
-[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("currency_amount_label", "currency_icon", "hint_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("7_4gnb8")
-currency_amount_label = NodePath("HBoxContainer/Text margin/Currency amount")
-currency_icon = NodePath("HBoxContainer/Currency icon")
+currency_amount_label = NodePath("VBoxContainer/HBoxContainer/Text margin/Currency amount")
+currency_icon = NodePath("VBoxContainer/HBoxContainer/Currency icon")
+hint_label = NodePath("VBoxContainer/Hint text padding/Hint label")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Currency icon" parent="CanvasLayer/UI/HBoxContainer" instance=ExtResource("7_osi8t")]
+[node name="Currency icon" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer" instance=ExtResource("7_osi8t")]
 layout_mode = 2
 
-[node name="Text margin" type="MarginContainer" parent="CanvasLayer/UI/HBoxContainer"]
+[node name="Text margin" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 2
 
-[node name="Currency amount" type="Label" parent="CanvasLayer/UI/HBoxContainer/Text margin"]
+[node name="Currency amount" type="Label" parent="CanvasLayer/UI/VBoxContainer/HBoxContainer/Text margin"]
 layout_mode = 2
 text = "999"
 label_settings = ExtResource("9_sa5k0")
+
+[node name="Hint text padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 50
+
+[node name="Hint label" type="Label" parent="CanvasLayer/UI/VBoxContainer/Hint text padding"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Press 'space' to start the battle"
+label_settings = ExtResource("6_osi8t")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="CanvasLayer/WinScreen/Winscreen padding/Page container/Button container/Next level button"]

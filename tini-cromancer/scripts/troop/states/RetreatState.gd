@@ -19,7 +19,6 @@ func on_state_enter(_target : Troop):
 	troop.movement_module.set_destination(troop.movement_module.initial_position)
 	troop.movement_module.collision_shape.disabled = true
 
-
 func on_state_exit(_target : Troop):
 	troop.movement_module.collision_shape.disabled = false
 

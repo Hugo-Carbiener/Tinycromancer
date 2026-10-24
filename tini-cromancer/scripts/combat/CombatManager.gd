@@ -55,6 +55,7 @@ func start_fight():
 	if !is_fight_started:
 		spawner.spawn_troops()
 		is_fight_started = true
+		SignalBus.on_battle_started.emit()
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("espace"):
