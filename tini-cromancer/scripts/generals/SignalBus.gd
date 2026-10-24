@@ -6,3 +6,4 @@ signal on_loss
 
 # button signals
 signal next_level_clicked
+signal shop_clicked

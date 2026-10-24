@@ -7,7 +7,7 @@ func push(target : CanvasItem, offset : Vector2, duration : float):
 
 func move(target : CanvasItem, from : Vector2, to : Vector2, duration : float):
 	var tween = get_tree().create_tween();
-	tween.tween_property(target, "position", to, duration).from(from).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN);
+	tween.tween_property(target, "global_position", to, duration).from(from).set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_IN);
 	await tween.finished;
 
 func add_child_fade_in(parent : CanvasItem, child : CanvasItem, duration : float):

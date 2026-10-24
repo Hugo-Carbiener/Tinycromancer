@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://basha3n4galef"]
+
+[ext_resource type="Texture2D" uid="uid://c4h0r2dhiyl2d" path="res://sprites/UI_bullet.png" id="1_75dwr"]
+[ext_resource type="Script" uid="uid://ceyobxg01gc3y" path="res://scenes/components/Shot.gd" id="1_qjvpx"]
+
+[node name="Shot" type="Node2D"]
+script = ExtResource("1_qjvpx")
+shot_duration = 0.6
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_75dwr")

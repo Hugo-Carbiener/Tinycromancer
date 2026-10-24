@@ -13,10 +13,20 @@ var alive_allies : Array[Troop]
 var enemies : Array[Troop]
 var alive_enemies : Array[Troop]
 var is_fight_started : bool = false
+var shot_id : int = 0
 
 func _ready() -> void:
 	if instance == null:
 		instance = self
+	build_level()
+
+func build_level():
+	spawner.ally_troops = UserData.troops
+	spawner.ennemy_troops = set_ennemi_troops()
+	
+func set_ennemi_troops():
+	#TODO : améliorer avec les nouvelles troop
+	return {TroopFactory.TROOPS.ENEMY_BASE_TROOP : UserData.level * 10}
 
 func register_troop(troop : Troop):
 	match (troop.faction):
