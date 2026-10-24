@@ -10,6 +10,8 @@ class_name Spawner extends Node2D
 var furthest_troop : Troop
 var vertical_offset_spawn_position : float
 var step : int = 11
+var max_troop_by_row : int = 20
+var current_troop_by_row
 
 
 func spawn_troops():
@@ -43,11 +45,12 @@ func determine_spawn_troop_position(troop : Troop, number_troops_of_type : int):
 		update_vertical_offset_spawn_position()
 	else:
 	
-		if troop.movement_module.cowardice != furthest_troop.movement_module.cowardice:
+		if troop.movement_module.cowardice != furthest_troop.movement_module.cowardice || current_troop_by_row >= max_troop_by_row:
 			reset_vertical_offset_spawn_position(number_troops_of_type)
 			troop.global_position = Vector2((furthest_troop.global_position.x - step),(troop.global_position.y + vertical_offset_spawn_position))
 			furthest_troop = troop
 			update_vertical_offset_spawn_position()
+			current_troop_by_row = 0
 		
 		else :
 			troop.global_position = Vector2(furthest_troop.global_position.x,(troop.global_position.y + vertical_offset_spawn_position))
@@ -60,6 +63,7 @@ func spawn_troops_from_faction(faction : CombatManager.FACTIONS):
 	var troops = {}
 	var spawn = null
 	furthest_troop = null
+	current_troop_by_row = 0
 	
 	match(faction):
 		CombatManager.FACTIONS.ALLIES:
@@ -74,9 +78,9 @@ func spawn_troops_from_faction(faction : CombatManager.FACTIONS):
 		var number_troops_of_type = troops[troop_type]
 		
 		for i in range(number_troops_of_type):
-			print('')
 			var new_troop = TroopFactory.create_troop(troop_type, faction)
 			spawn.add_child(new_troop)
 			new_troop.global_position = spawn.global_position
 			print("init position" + str(new_troop.global_position))
 			determine_spawn_troop_position(new_troop, number_troops_of_type)
+			current_troop_by_row += 1

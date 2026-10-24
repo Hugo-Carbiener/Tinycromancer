@@ -38,7 +38,6 @@ tile_map_data = PackedByteArray("AAD5//z/AAAAAAAAAAD5//3/AAAAAAAAAAD5//7/AAAAAAA
 tile_set = SubResource("TileSet_aic3r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.66, 1.66)
 
 [node name="Allies spawn" type="Node2D" parent="."]
 position = Vector2(-62, -39)
