@@ -304,6 +304,7 @@ script = ExtResource("1_88h1p")
 combat_module = NodePath("CombatModule")
 movement_module = NodePath("MovementModule")
 animation_module = NodePath("Animated sprite")
+role = 2
 
 [node name="Animated sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lkha")

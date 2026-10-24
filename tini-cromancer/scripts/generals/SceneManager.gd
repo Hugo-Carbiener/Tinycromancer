@@ -16,4 +16,5 @@ func open_shop():
 	get_tree().change_scene_to_packed(shop);
 
 func start_fight():
+	print("go fight")
 	get_tree().change_scene_to_packed(fight);
