@@ -3,6 +3,9 @@ class_name MovementModule extends Node2D
 var troop : Troop
 @export var movement_speed : int
 @export var navigation_agent : NavigationAgent2D
+@export var collision_shape : CollisionShape2D
+@export_range(0,20,1) var cowardice : int
+
 ## @export var weight : int$ 
 var initial_position : Vector2
 

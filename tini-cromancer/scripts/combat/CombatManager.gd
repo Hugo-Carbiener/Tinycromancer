@@ -29,9 +29,9 @@ func get_alive_opponents(faction : FACTIONS) -> Array[Troop]:
 	return opps.filter(func(troop): return !troop.is_dead())
 
 func start_fight():
-	print('fight !!')
-	spawner.prout()
-	is_fight_started = true
+	if !is_fight_started:
+		spawner.spawn_troops()
+		is_fight_started = true
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("espace"):

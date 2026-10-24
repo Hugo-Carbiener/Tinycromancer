@@ -223,10 +223,11 @@ attack_damage = 5
 attack_range = 11
 metadata/_custom_type_script = "uid://d32el1d16ipa2"
 
-[node name="MovementModule" type="Node2D" parent="." node_paths=PackedStringArray("navigation_agent")]
+[node name="MovementModule" type="Node2D" parent="." node_paths=PackedStringArray("navigation_agent", "collision_shape")]
 script = ExtResource("4_ublrq")
-movement_speed = 5000
+movement_speed = 1000
 navigation_agent = NodePath("../NavigationAgent2D")
+collision_shape = NodePath("../CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
