@@ -38,6 +38,7 @@ tile_map_data = PackedByteArray("AAD5//z/AAAAAAAAAAD5//3/AAAAAAAAAAD5//7/AAAAAAA
 tile_set = SubResource("TileSet_aic3r")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.66, 1.66)
 
 [node name="Allies spawn" type="Node2D" parent="."]
 position = Vector2(-62, -39)
@@ -56,29 +57,21 @@ offset = Vector2(-320, -180)
 transform = Transform2D(1, 0, 0, 1, -320, -180)
 follow_viewport_enabled = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="WinScreen" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="WinScreen" type="ColorRect" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-color = Color(0, 0, 0.28235295, 0.32156864)
 script = ExtResource("4_tj4ph")
 launch_signal = "on_win"
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/WinScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WinScreen"]
+layout_mode = 2
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer/WinScreen/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/WinScreen/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_nog7s")
 expand_mode = 1
-stretch_mode = 4
+stretch_mode = 3
