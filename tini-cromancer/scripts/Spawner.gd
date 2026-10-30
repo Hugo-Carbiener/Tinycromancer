@@ -13,9 +13,7 @@ var max_troop_by_row : int = 20
 var current_troop_by_row
 
 func spawn_troops():
-	print('spawn ally')
 	spawn_troops_from_faction(CombatManager.FACTIONS.ALLIES)
-	print('\n spawn enemy')
 	spawn_troops_from_faction(CombatManager.FACTIONS.ENEMIES)
 
 func reset_vertical_offset_spawn_position(number_troops_of_type : int):

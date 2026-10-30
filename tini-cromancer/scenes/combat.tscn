@@ -209,9 +209,11 @@ tile_set = SubResource("TileSet_aic3r")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Allies spawn" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-62, 0)
 
 [node name="Enemiess spawn" type="Node2D" parent="."]
+y_sort_enabled = true
 position = Vector2(72, -2)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

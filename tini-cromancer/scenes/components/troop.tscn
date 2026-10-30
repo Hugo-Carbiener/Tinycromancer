@@ -201,7 +201,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ublrq"]
-radius = 5.0
+radius = 4.0
 
 [node name="Troop" type="CharacterBody2D" node_paths=PackedStringArray("combat_module", "movement_module", "animation_module")]
 script = ExtResource("1_k10xu")
@@ -212,7 +212,7 @@ animation_module = NodePath("Animated sprite")
 [node name="Animated sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lkha")
 animation = &"hit"
-offset = Vector2(0, -8)
+offset = Vector2(0, -12)
 script = ExtResource("3_2lkha")
 
 [node name="CombatModule" type="Node2D" parent="."]
@@ -230,7 +230,6 @@ navigation_agent = NodePath("../NavigationAgent2D")
 collision_shape = NodePath("../CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_ublrq")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
