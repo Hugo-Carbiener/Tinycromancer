@@ -9,6 +9,7 @@ func get_next_state() -> StateMachine.STATES:
 func on_state_enter(_target : Troop):
 	super(troop)
 	troop.movement_module.collision_shape.disabled = true
+	troop.z_index = Constants.CORPSE_Z_ORDER
 
 func on_state_exit(_target : Troop):
 	pass
