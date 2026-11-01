@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="tini-cromancer"
+config/name="Tinycromancer"
 run/main_scene="uid://boltdg1o82tb2"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cr5rdoplkr25e"
 
 [autoload]
 
