@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqja72kf7bd2v"]
+[gd_scene load_steps=5 format=3 uid="uid://dqja72kf7bd2v"]
 
 [ext_resource type="PackedScene" uid="uid://bpggasm03popu" path="res://scenes/ui/currency_display.tscn" id="1_kt1tu"]
+[ext_resource type="Script" uid="uid://bcckfnhfg2ea2" path="res://scripts/ui/workshops-scene/TabManager.gd" id="2_cmljf"]
 [ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui/large-texture-button.tscn" id="2_x3sho"]
+[ext_resource type="Texture2D" uid="uid://8gik00cwsxir" path="res://sprites/UI_base-frame.png" id="3_n2h7y"]
 
 [node name="Workshops" type="Node2D"]
 
@@ -23,6 +25,36 @@ layout_mode = 2
 
 [node name="Currency display" parent="CanvasLayer/UI/VBoxContainer" instance=ExtResource("1_kt1tu")]
 layout_mode = 2
+
+[node name="Content padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="Tab padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer"]
+layout_mode = 2
+
+[node name="Tab container" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Tab padding"]
+z_index = 2
+layout_mode = 2
+theme_override_constants/separation = -16
+script = ExtResource("2_cmljf")
+tab_amount = 2
+
+[node name="Page container" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Frame" type="NinePatchRect" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Page container"]
+layout_mode = 2
+texture = ExtResource("3_n2h7y")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
 
 [node name="Next level button" parent="CanvasLayer/UI/VBoxContainer" instance=ExtResource("2_x3sho")]
 layout_mode = 2

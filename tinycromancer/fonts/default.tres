@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://iv4116vilm50"]
 
-[ext_resource type="FontFile" uid="uid://1a0dtola0qk5" path="res://fonts/Dedicool.ttf" id="1_q43l0"]
+[ext_resource type="FontVariation" uid="uid://cd5lfdvv756q4" path="res://fonts/dedicool_realigned.tres" id="1_q43l0"]
 
 [resource]
 font = ExtResource("1_q43l0")
