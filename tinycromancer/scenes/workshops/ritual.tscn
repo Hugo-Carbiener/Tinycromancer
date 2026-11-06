@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bekjoqpn3qsuf"]
+
+[ext_resource type="LabelSettings" uid="uid://cihjvaf0nbdvx" path="res://fonts/title.tres" id="1_rr6kb"]
+
+[node name="Ritual" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Ritual padding" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Ritual padding"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "THIS IS THE RITUAL"
+label_settings = ExtResource("1_rr6kb")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpggasm03popu"]
 
 [ext_resource type="Script" uid="uid://mee8bqiuypbp" path="res://scripts/ui/components/CurrencyDisplay.gd" id="1_hwlup"]
-[ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui/currency_icon.tscn" id="1_owlkl"]
+[ext_resource type="PackedScene" uid="uid://bmneu2br407fk" path="res://scenes/ui-components/currency_icon.tscn" id="1_owlkl"]
 [ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="2_hwlup"]
 
 [node name="Currency display" type="MarginContainer" node_paths=PackedStringArray("currency_amount_label", "currency_icon")]

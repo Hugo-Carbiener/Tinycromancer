@@ -1,6 +1,6 @@
 class_name Shot extends Node2D
 
-const shot_scene: PackedScene = preload("res://scenes/components/shot.tscn")
+const shot_scene: PackedScene = preload("res://scenes/actors/shot.tscn")
 
 @export var shot_duration : float
 var target : Troop

@@ -11,3 +11,4 @@ signal shop_clicked
 
 # ui signals
 signal currency_amount_updated
+signal tab_clicked

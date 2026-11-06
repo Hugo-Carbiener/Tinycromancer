@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TabData" load_steps=3 format=3 uid="uid://6ymk7jjjdvdf"]
+
+[ext_resource type="Texture2D" uid="uid://cfgylxr5ls1p0" path="res://sprites/UI_currency-icon.png" id="1_iakkw"]
+[ext_resource type="Script" uid="uid://duq4e2d2wmcso" path="res://scripts/ui/workshops-scene/TabData.gd" id="2_e5cn1"]
+
+[resource]
+script = ExtResource("2_e5cn1")
+icon_texture = ExtResource("1_iakkw")
+tab_title = "Rituals"
+destination_workshop = 2
+metadata/_custom_type_script = "uid://duq4e2d2wmcso"

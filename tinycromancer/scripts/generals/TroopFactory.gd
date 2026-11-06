@@ -1,8 +1,8 @@
 extends Node2D
 
-var base_troop_scene : PackedScene = preload("res://scenes/components/troop.tscn")
-var archer_troop_scene : PackedScene = preload("res://scenes/components/troop_archer.tscn")
-var enemy_base_troop_scene : PackedScene = preload("res://scenes/components/troop_enemy.tscn")
+var base_troop_scene : PackedScene = preload("res://scenes/actors/troop.tscn")
+var archer_troop_scene : PackedScene = preload("res://scenes/actors/troop_archer.tscn")
+var enemy_base_troop_scene : PackedScene = preload("res://scenes/actors/troop_enemy.tscn")
 
 enum ROLES {
 	BASE_TROOP,

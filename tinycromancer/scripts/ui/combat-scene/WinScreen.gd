@@ -1,6 +1,6 @@
 class_name WinScreen extends PopUpScreen
 
-const currency_icon_scene : PackedScene = preload("res://scenes/ui/currency_icon.tscn")
+const currency_icon_scene : PackedScene = preload("res://scenes/ui-components/currency_icon.tscn")
 
 @export_group("Components")
 @export var content_title : Label
