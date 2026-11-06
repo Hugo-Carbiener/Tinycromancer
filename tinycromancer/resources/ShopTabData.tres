@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TabData" load_steps=3 format=3 uid="uid://c2ejtohg4n6ki"]
+
+[ext_resource type="Script" uid="uid://duq4e2d2wmcso" path="res://scripts/ui/workshops-scene/TabData.gd" id="1_18jo1"]
+[ext_resource type="Texture2D" uid="uid://cfgylxr5ls1p0" path="res://sprites/UI_currency-icon.png" id="1_p4q7f"]
+
+[resource]
+script = ExtResource("1_18jo1")
+icon_texture = ExtResource("1_p4q7f")
+tab_title = "Shop"
+destination_workshop = 1
+metadata/_custom_type_script = "uid://duq4e2d2wmcso"

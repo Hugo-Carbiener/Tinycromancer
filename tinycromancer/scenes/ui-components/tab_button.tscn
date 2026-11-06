@@ -1,67 +1,70 @@
 [gd_scene load_steps=10 format=3 uid="uid://c7bkwnkqmapxh"]
 
-[ext_resource type="Texture2D" uid="uid://d0c6d5okfy3j0" path="res://sprites/UI_tab-unselected.png" id="1_k8mlq"]
-[ext_resource type="Texture2D" uid="uid://cfgylxr5ls1p0" path="res://sprites/UI_currency-icon.png" id="2_rg372"]
-[ext_resource type="Texture2D" uid="uid://drxhhc7tg362c" path="res://sprites/UI_tab-selected.png" id="2_s8i4r"]
-[ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="3_2v3js"]
-[ext_resource type="Script" uid="uid://d2h0jmf3uonkv" path="res://scripts/ui/workshops-scene/Tab.gd" id="3_rg372"]
-[ext_resource type="Texture2D" uid="uid://cedlabjs7n1wn" path="res://sprites/UI_tab-hover.png" id="3_tsadd"]
+[ext_resource type="Texture2D" uid="uid://d0c6d5okfy3j0" path="res://sprites/UI_tab-unselected.png" id="1_qy7t2"]
+[ext_resource type="Texture2D" uid="uid://drxhhc7tg362c" path="res://sprites/UI_tab-selected.png" id="2_ydjj8"]
+[ext_resource type="Texture2D" uid="uid://cedlabjs7n1wn" path="res://sprites/UI_tab-hover.png" id="3_jmwoi"]
+[ext_resource type="Script" uid="uid://d2h0jmf3uonkv" path="res://scripts/ui/workshops-scene/Tab.gd" id="4_17d5m"]
+[ext_resource type="Texture2D" uid="uid://cfgylxr5ls1p0" path="res://sprites/UI_currency-icon.png" id="5_mmbbt"]
+[ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="6_lb7eh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ctjw"]
-texture = ExtResource("1_k8mlq")
+texture = ExtResource("1_qy7t2")
 texture_margin_left = 12.0
 texture_margin_top = 6.0
 texture_margin_right = 12.0
 texture_margin_bottom = 16.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y7hmt"]
-texture = ExtResource("2_s8i4r")
+texture = ExtResource("2_ydjj8")
 texture_margin_left = 12.0
 texture_margin_top = 6.0
 texture_margin_right = 12.0
 texture_margin_bottom = 16.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b3f44"]
-texture = ExtResource("3_tsadd")
+texture = ExtResource("3_jmwoi")
 texture_margin_left = 12.0
 texture_margin_top = 6.0
 texture_margin_right = 12.0
 texture_margin_bottom = 16.0
 
-[node name="Tab" type="Button"]
+[node name="Tab" type="MarginContainer" node_paths=PackedStringArray("button", "icon_sprite", "title_label")]
+script = ExtResource("4_17d5m")
+button = NodePath("Button")
+icon_sprite = NodePath("Button content padding/Content container/Icon")
+title_label = NodePath("Button content padding/Content container/Title")
+
+[node name="Button" type="Button" parent="."]
 custom_minimum_size = Vector2(64, 32)
-offset_right = 24.0
-offset_bottom = 22.0
+layout_mode = 2
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxTexture_7ctjw")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_y7hmt")
 theme_override_styles/hover = SubResource("StyleBoxTexture_b3f44")
 toggle_mode = true
-script = ExtResource("3_rg372")
 
 [node name="Button content padding" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 8
+theme_override_constants/margin_right = 14
 
 [node name="Content container" type="HBoxContainer" parent="Button content padding"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 2
-alignment = 1
 
 [node name="Icon" type="TextureRect" parent="Button content padding/Content container"]
 layout_mode = 2
-texture = ExtResource("2_rg372")
+size_flags_horizontal = 0
+mouse_filter = 2
+texture = ExtResource("5_mmbbt")
 stretch_mode = 3
 
 [node name="Title" type="Label" parent="Button content padding/Content container"]
 layout_mode = 2
+size_flags_horizontal = 0
 text = "Shop"
-label_settings = ExtResource("3_2v3js")
+label_settings = ExtResource("6_lb7eh")

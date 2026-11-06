@@ -1,29 +1,33 @@
-class_name Tab extends Button
+class_name Tab extends Control
 
-const tab_scene : PackedScene = preload("res://scenes/ui/tab_button.tscn")
+const tab_scene : PackedScene = preload("res://scenes/ui-components/tab_button.tscn")
 
-@export_group("Tab customization")
-@export var icon_texture : Texture2D
-@export var title : String
-@export var signal_to_emit : String
+@export_group("Components")
+@export var button : Button
+@export var icon_sprite : TextureRect
+@export var title_label : Label
+var tab_destination : WorkshopManager.WORKSHOPS
 
 var toggled_via_code = false
 
-func _ready() -> void:
-	icon.texture = icon_texture
-	text = title
-	toggled.connect(on_toggle)
+static func create_tab(tabData : TabData) -> Tab:
+	var tab = tab_scene.instantiate()
+	tab.setup(tabData)
+	return tab
+
+func setup(tabData : TabData):
+	icon_sprite.texture = tabData.icon_texture
+	title_label.text = tabData.tab_title
+	tab_destination = tabData.destination_workshop
+	button.toggled.connect(on_toggle)
 
 func on_toggle(on : bool):
 	if on:
-		if SignalBus.has_signal(signal_to_emit): 
-			SignalBus.emit_signal(signal_to_emit, self)
-		else:
-				printerr("Signal " + signal_to_emit + " on tab is not defined.")
+		SignalBus.tab_clicked.emit(self)
 	elif not toggled_via_code: 
-		button_pressed = true
+		button.button_pressed = true
 
 func unselect():
 	toggled_via_code = true
-	button_pressed = false
+	button.button_pressed = false
 	toggled_via_code = false
