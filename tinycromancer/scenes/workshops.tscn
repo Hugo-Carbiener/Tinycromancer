@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqja72kf7bd2v"]
 
-[ext_resource type="PackedScene" uid="uid://bpggasm03popu" path="res://scenes/ui/currency_display.tscn" id="1_kt1tu"]
+[ext_resource type="PackedScene" uid="uid://bpggasm03popu" path="res://scenes/ui-components/currency_display.tscn" id="1_kt1tu"]
 [ext_resource type="Script" uid="uid://bcckfnhfg2ea2" path="res://scripts/ui/workshops-scene/TabManager.gd" id="2_cmljf"]
-[ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui/large-texture-button.tscn" id="2_x3sho"]
+[ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui-components/large-texture-button.tscn" id="2_x3sho"]
 [ext_resource type="Texture2D" uid="uid://8gik00cwsxir" path="res://sprites/UI_base-frame.png" id="3_n2h7y"]
 
 [node name="Workshops" type="Node2D"]
