@@ -1,21 +1,52 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs6e8d254i0o5"]
+[gd_scene load_steps=3 format=3 uid="uid://cs6e8d254i0o5"]
 
-[ext_resource type="LabelSettings" uid="uid://cihjvaf0nbdvx" path="res://fonts/title.tres" id="1_gw8qt"]
+[ext_resource type="PackedScene" uid="uid://dr5edav3chhjl" path="res://scenes/ui-components/squad.tscn" id="1_cjb02"]
+[ext_resource type="LabelSettings" uid="uid://dam3vf6vqbayh" path="res://fonts/inset.tres" id="2_sh8qd"]
 
-[node name="Warcamp" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="Warcamp padding" type="MarginContainer" parent="."]
-layout_mode = 1
+[node name="Warcamp" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Label" type="Label" parent="Warcamp padding"]
+[node name="Squads container" type="HBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "THIS IS THE WARCAMP"
-label_settings = ExtResource("1_gw8qt")
+alignment = 1
+
+[node name="Main squad area" type="MarginContainer" parent="Squads container"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Squads container/Main squad area"]
+layout_mode = 2
+
+[node name="Main squad" parent="Squads container/Main squad area/VBoxContainer" instance=ExtResource("1_cjb02")]
+layout_mode = 2
+
+[node name="Title" parent="Squads container/Main squad area/VBoxContainer/Main squad/Reserve area padding/Reserve area container/Title margin" index="0"]
+text = "MAIN SQUAD"
+
+[node name="Reserve squad" parent="Squads container/Main squad area/VBoxContainer" instance=ExtResource("1_cjb02")]
+layout_mode = 2
+size_flags_stretch_ratio = 0.5
+
+[node name="Sub squads area" type="MarginContainer" parent="Squads container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Subsquads container" type="GridContainer" parent="Squads container/Sub squads area"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Squads container/Sub squads area"]
+layout_mode = 2
+text = "Recruit generals to unlock
+new squad slots..."
+label_settings = ExtResource("2_sh8qd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="Squads container/Main squad area/VBoxContainer/Main squad"]

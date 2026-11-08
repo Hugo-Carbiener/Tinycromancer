@@ -1,0 +1,12 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dam3vf6vqbayh"]
+
+[ext_resource type="FontFile" uid="uid://cshmve6yaov2u" path="res://fonts/medieval-pixel.ttf" id="1_twu22"]
+
+[resource]
+font = ExtResource("1_twu22")
+font_color = Color(0.23137255, 0.19215687, 0.3647059, 1)
+stacked_shadow_count = 2
+stacked_shadow_0/offset = Vector2(0, -1)
+stacked_shadow_0/color = Color(0.19607843, 0.16078432, 0.2784314, 1)
+stacked_shadow_1/offset = Vector2(0, 1)
+stacked_shadow_1/color = Color(0.29411766, 0.35686275, 0.67058825, 1)
