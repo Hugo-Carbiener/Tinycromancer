@@ -23,14 +23,13 @@ AnimationsUtils="*res://scripts/generals/AnimationsUtils.gd"
 Constants="*res://scripts/generals/Constants.gd"
 SceneManager="*res://scripts/generals/SceneManager.gd"
 ResourceManager="*res://scripts/generals/ResourceManager.gd"
-UserData="*res://scripts/generals/UserData.gd"
 RitualFactory="*res://scripts/generals/RitualFactory.gd"
+UserData="*res://scripts/generals/UserData.gd"
 
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=2
 window/stretch/mode="canvas_items"
 
 [input]

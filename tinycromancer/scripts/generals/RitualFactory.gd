@@ -19,5 +19,5 @@ var scrollPerMagic : Dictionary[MAGIC, Texture2D] = {
 	MAGIC.UNHOLY : unholy_magic_scroll,
 }
 
-func get_random_ritual() -> Ritual:
+func get_random_ritual() -> RitualRecipe:
 	return null

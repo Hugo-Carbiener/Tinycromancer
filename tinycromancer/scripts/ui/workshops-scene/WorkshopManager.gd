@@ -2,12 +2,14 @@ class_name WorkshopManager extends Control
 
 const warcamp_scene : PackedScene = preload("res://scenes/workshops/warcamp_ui.tscn")
 const shop_scene : PackedScene = preload("res://scenes/workshops/shop_ui.tscn")
-const ritual_scene : PackedScene = preload("res://scenes/workshops/ritual_ui.tscn")
+const ritual_scene : PackedScene = preload("res://scenes/workshops/ritual/ritual_ui.tscn")
 
 @export_group("Data")
 @export var tabDataList : Array[TabData]
 @export_group("Components")
-@export var workshop_scene_container : Control
+@export var tab_container : HBoxContainer
+@export var workshop_container : MarginContainer
+@export var resource_container : HBoxContainer
 
 var tabs : Array[Tab]
 var selected_tab : Tab
@@ -30,14 +32,20 @@ func _ready() -> void:
 
 func setup():
 	SignalBus.tab_clicked.connect(on_tab_selected)
+	init_resources()
 	generateTabs()
 	open_default_scene()
+
+func init_resources():
+	for resources in UserData.resources.keys():
+		var resource_display = ResourceDisplay.create_resource_display(resources)
+		resource_container.add_child(resource_display)
 
 func generateTabs():
 	for tabData in tabDataList:
 		var tab = Tab.create_tab(tabData)
 		tabs.append(tab)
-		add_child(tab)
+		tab_container.add_child(tab)
 
 func open_default_scene():
 	tabs[0].button.button_pressed = true
@@ -63,5 +71,5 @@ func load_tab_scene(tab : Tab):
 	
 	if opened_workshop != null:
 		opened_workshop.queue_free()
-	workshop_scene_container.add_child(scene_to_load)
+	workshop_container.add_child(scene_to_load)
 	opened_workshop = scene_to_load

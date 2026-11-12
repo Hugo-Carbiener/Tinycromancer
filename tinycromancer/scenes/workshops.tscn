@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://dqja72kf7bd2v"]
+[gd_scene load_steps=11 format=3 uid="uid://dqja72kf7bd2v"]
 
-[ext_resource type="Script" uid="uid://bwmo0oepfj8qe" path="res://scripts/ui/workshops-scene/WorkshopUI.gd" id="1_4oi2o"]
 [ext_resource type="Texture2D" uid="uid://be6ka7hq7wiqd" path="res://sprites/UI_header.png" id="1_rar4c"]
 [ext_resource type="LabelSettings" uid="uid://dam3vf6vqbayh" path="res://fonts/inset.tres" id="2_4oi2o"]
 [ext_resource type="Script" uid="uid://bcckfnhfg2ea2" path="res://scripts/ui/workshops-scene/WorkshopManager.gd" id="2_cmljf"]
@@ -16,7 +15,7 @@
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("resource_container")]
+[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("tab_container", "workshop_container", "resource_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -26,7 +25,10 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-script = ExtResource("1_4oi2o")
+script = ExtResource("2_cmljf")
+tabDataList = Array[ExtResource("3_y0seh")]([ExtResource("4_iusj4"), ExtResource("5_5e252"), ExtResource("6_xa4ts")])
+tab_container = NodePath("VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer/Tab padding/Tab container")
+workshop_container = NodePath("VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer/Tab content container")
 resource_container = NodePath("VBoxContainer/Content padding/VBoxContainer/Subtitle margin/Resources container/Resources padding/HBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
@@ -112,13 +114,10 @@ theme_override_constants/separation = -16
 layout_mode = 2
 theme_override_constants/margin_right = 7
 
-[node name="Tab container" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer/Tab padding" node_paths=PackedStringArray("workshop_scene_container")]
+[node name="Tab container" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer/Tab padding"]
 z_index = 2
 layout_mode = 2
 theme_override_constants/separation = -16
-script = ExtResource("2_cmljf")
-tabDataList = Array[ExtResource("3_y0seh")]([ExtResource("4_iusj4"), ExtResource("5_5e252"), ExtResource("6_xa4ts")])
-workshop_scene_container = NodePath("../../Tab content container")
 
 [node name="Tab content container" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer"]
 layout_mode = 2

@@ -40,9 +40,9 @@ func spend_rest_currency():
 	SignalBus.resource_amount_updated.emit(ResourceManager.Resources.BASIC_SOUL, soul_amount, 0)
 	UserData.resources.set(ResourceManager.Resources.BASIC_SOUL, 0)
 
-func set_enemy_troops() -> Dictionary[TroopFactory.TROOP_TYPES, int]:
+func set_enemy_troops() -> Dictionary[TroopFactory.ENEMY_TROOP_TYPES, int]:
 	#TODO : améliorer avec les nouvelles troop
-	var enemy_troops : Dictionary[TroopFactory.TROOP_TYPES, int] = {TroopFactory.TROOP_TYPES.ENEMY_BASE_TROOP : UserData.level_number * 10}
+	var enemy_troops : Dictionary[TroopFactory.ENEMY_TROOP_TYPES, int] = {TroopFactory.ENEMY_TROOP_TYPES.BASE_TROOP : UserData.level_number * 10}
 	return enemy_troops
 
 func register_troop(troop : Troop):

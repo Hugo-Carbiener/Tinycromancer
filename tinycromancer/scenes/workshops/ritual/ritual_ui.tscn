@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://bekjoqpn3qsuf"]
+
+[ext_resource type="Texture2D" uid="uid://bjbmpmpte13d3" path="res://sprites/UI_arrow-button.png" id="1_j2n3w"]
+[ext_resource type="Script" uid="uid://6chrgvlisv6q" path="res://scripts/ui/workshops-scene/ritual-scene/RitualUI.gd" id="1_ubg6p"]
+[ext_resource type="Texture2D" uid="uid://ddor7mpktn7l5" path="res://sprites/UI_arrow-button-pressed.png" id="2_ubg6p"]
+[ext_resource type="Texture2D" uid="uid://6e7xn03vmum4" path="res://sprites/UI_arrow-button-hover.png" id="3_xcdyc"]
+[ext_resource type="Texture2D" uid="uid://dnvh8hl0gp612" path="res://sprites/UI_arrow-button-disable.png" id="4_ulgud"]
+[ext_resource type="Texture2D" uid="uid://cjfxyyravvdyp" path="res://sprites/UI_inset.png" id="5_obarf"]
+[ext_resource type="LabelSettings" uid="uid://cmwa08oev84t" path="res://fonts/in-inset.tres" id="6_0idc0"]
+
+[node name="Ritual" type="MarginContainer" node_paths=PackedStringArray("ritual_recipe_container", "page_indicator_container", "previous_page_button", "next_page_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ubg6p")
+ritual_recipe_container = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Scroll list padding/Ritual recipe container")
+page_indicator_container = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Page indicator padding/Page indicator container")
+previous_page_button = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Previous page button")
+next_page_button = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Next page button")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Left area margin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Right area margin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.4
+
+[node name="HBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right area margin"]
+layout_mode = 2
+
+[node name="Top right area margin" type="MarginContainer" parent="HBoxContainer/Right area margin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Scroll area container" type="HBoxContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Previous page button" type="TextureButton" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("1_j2n3w")
+texture_pressed = ExtResource("2_ubg6p")
+texture_hover = ExtResource("3_xcdyc")
+texture_disabled = ExtResource("4_ulgud")
+stretch_mode = 3
+
+[node name="Scroll list area" type="MarginContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Scroll list background inset" type="NinePatchRect" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area"]
+layout_mode = 2
+texture = ExtResource("5_obarf")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Scroll area content container" type="VBoxContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area"]
+layout_mode = 2
+
+[node name="Scroll list title padding" type="MarginContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+
+[node name="Scroll list titles" type="Label" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Scroll list title padding"]
+layout_mode = 2
+text = "Rituals recipes"
+label_settings = ExtResource("6_0idc0")
+
+[node name="Scroll list padding" type="MarginContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+
+[node name="Ritual recipe container" type="HBoxContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Scroll list padding"]
+layout_mode = 2
+
+[node name="Page indicator padding" type="MarginContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 4
+
+[node name="Page indicator container" type="HBoxContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Page indicator padding"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Next page button" type="TextureButton" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container"]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("1_j2n3w")
+texture_pressed = ExtResource("2_ubg6p")
+texture_hover = ExtResource("3_xcdyc")
+texture_disabled = ExtResource("4_ulgud")
+stretch_mode = 3
+flip_h = true
+
+[node name="Legendary recipes area" type="MarginContainer" parent="HBoxContainer/Right area margin/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Selected recipe area" type="MarginContainer" parent="HBoxContainer/Right area margin/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5

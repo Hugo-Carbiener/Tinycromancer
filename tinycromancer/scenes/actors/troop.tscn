@@ -211,7 +211,7 @@ animation_module = NodePath("Animated sprite")
 
 [node name="Animated sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lkha")
-animation = &"hit"
+animation = &"idle"
 offset = Vector2(0, -12)
 script = ExtResource("3_2lkha")
 
