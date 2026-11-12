@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cshmve6yaov2u"
-path="res://.godot/imported/medieval-pixel.ttf-b7f2ca206e61867f43fe1eadc05624d9.fontdata"
+path="res://.godot/imported/medieval-pixel.ttf-794d453ddcdf9a4767b28b54fd5cc276.fontdata"
 
 [deps]
 
-source_file="res://fonts/medieval-pixel.ttf"
-dest_files=["res://.godot/imported/medieval-pixel.ttf-b7f2ca206e61867f43fe1eadc05624d9.fontdata"]
+source_file="res://fonts/font-files/medieval-pixel.ttf"
+dest_files=["res://.godot/imported/medieval-pixel.ttf-794d453ddcdf9a4767b28b54fd5cc276.fontdata"]
 
 [params]
 

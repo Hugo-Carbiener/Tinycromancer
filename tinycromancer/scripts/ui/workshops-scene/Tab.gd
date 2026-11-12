@@ -20,14 +20,22 @@ func setup(tabData : TabData):
 	title_label.text = tabData.tab_title
 	tab_destination = tabData.destination_workshop
 	button.toggled.connect(on_toggle)
+	unselect()
 
 func on_toggle(on : bool):
 	if on:
 		SignalBus.tab_clicked.emit(self)
+		select()
 	elif not toggled_via_code: 
 		button.button_pressed = true
 
+func select():
+	icon_sprite.self_modulate = Color.WHITE
+	title_label.self_modulate = Color.WHITE
+	
 func unselect():
 	toggled_via_code = true
 	button.button_pressed = false
+	icon_sprite.self_modulate = Color.DIM_GRAY
+	title_label.self_modulate = Color.DIM_GRAY
 	toggled_via_code = false

@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cmwa08oev84t"]
+
+[ext_resource type="FontFile" uid="uid://1a0dtola0qk5" path="res://fonts/font-files/Dedicool.ttf" id="1_7gvy1"]
+
+[resource]
+font = ExtResource("1_7gvy1")
+font_size = 8
+font_color = Color(0.29411766, 0.35686275, 0.67058825, 1)
+shadow_size = 0
+shadow_color = Color(0.19607843, 0.16078432, 0.2784314, 1)
+shadow_offset = Vector2(0, -1)

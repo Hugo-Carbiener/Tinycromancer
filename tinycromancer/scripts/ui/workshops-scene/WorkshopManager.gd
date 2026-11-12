@@ -1,8 +1,8 @@
 class_name WorkshopManager extends Control
 
-const warcamp_scene : PackedScene = preload("res://scenes/workshops/warcamp.tscn")
-const shop_scene : PackedScene = preload("res://scenes/workshops/shop.tscn")
-const ritual_scene : PackedScene = preload("res://scenes/workshops/ritual.tscn")
+const warcamp_scene : PackedScene = preload("res://scenes/workshops/warcamp_ui.tscn")
+const shop_scene : PackedScene = preload("res://scenes/workshops/shop_ui.tscn")
+const ritual_scene : PackedScene = preload("res://scenes/workshops/ritual_ui.tscn")
 
 @export_group("Data")
 @export var tabDataList : Array[TabData]

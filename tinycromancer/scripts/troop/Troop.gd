@@ -4,7 +4,7 @@ class_name Troop extends CharacterBody2D
 @export var combat_module : CombatModule
 @export var movement_module : MovementModule
 @export var animation_module : AnimationModule
-@export var role : TroopFactory.ROLES
+@export var role : TroopFactory.TROOP_TYPES
 
 var target : Troop
 var faction : CombatManager.FACTIONS

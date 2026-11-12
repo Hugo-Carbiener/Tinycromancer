@@ -1,6 +1,6 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dam3vf6vqbayh"]
 
-[ext_resource type="FontFile" uid="uid://cshmve6yaov2u" path="res://fonts/medieval-pixel.ttf" id="1_twu22"]
+[ext_resource type="FontFile" uid="uid://b7xgt0c6owh44" path="res://fonts/font-files/Not Jam Mono Old Peculiar 8.ttf" id="1_twu22"]
 
 [resource]
 font = ExtResource("1_twu22")

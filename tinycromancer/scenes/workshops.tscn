@@ -1,19 +1,22 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqja72kf7bd2v"]
+[gd_scene load_steps=12 format=3 uid="uid://dqja72kf7bd2v"]
 
-[ext_resource type="PackedScene" uid="uid://bpggasm03popu" path="res://scenes/ui-components/currency_display.tscn" id="1_kt1tu"]
+[ext_resource type="Script" uid="uid://bwmo0oepfj8qe" path="res://scripts/ui/workshops-scene/WorkshopUI.gd" id="1_4oi2o"]
+[ext_resource type="Texture2D" uid="uid://be6ka7hq7wiqd" path="res://sprites/UI_header.png" id="1_rar4c"]
+[ext_resource type="LabelSettings" uid="uid://dam3vf6vqbayh" path="res://fonts/inset.tres" id="2_4oi2o"]
 [ext_resource type="Script" uid="uid://bcckfnhfg2ea2" path="res://scripts/ui/workshops-scene/WorkshopManager.gd" id="2_cmljf"]
-[ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui-components/large-texture-button.tscn" id="2_x3sho"]
 [ext_resource type="Texture2D" uid="uid://8gik00cwsxir" path="res://sprites/UI_base-frame.png" id="3_n2h7y"]
+[ext_resource type="Texture2D" uid="uid://bbse63uiv8ett" path="res://sprites/UI_rock-frame.png" id="3_w753w"]
 [ext_resource type="Script" uid="uid://duq4e2d2wmcso" path="res://scripts/ui/workshops-scene/TabData.gd" id="3_y0seh"]
 [ext_resource type="Resource" uid="uid://6ymk7jjjdvdf" path="res://resources/RitualTabData.tres" id="4_iusj4"]
 [ext_resource type="Resource" uid="uid://c2ejtohg4n6ki" path="res://resources/ShopTabData.tres" id="5_5e252"]
+[ext_resource type="PackedScene" uid="uid://bpx0xhr08iwlb" path="res://scenes/ui-components/base-texture-button.tscn" id="5_w753w"]
 [ext_resource type="Resource" uid="uid://mre0xd1ystrs" path="res://resources/WarcampTabData.tres" id="6_xa4ts"]
 
 [node name="Workshops" type="Node2D"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="UI" type="MarginContainer" parent="CanvasLayer"]
+[node name="UI" type="MarginContainer" parent="CanvasLayer" node_paths=PackedStringArray("resource_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,11 +26,10 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("1_4oi2o")
+resource_container = NodePath("VBoxContainer/Content padding/VBoxContainer/Subtitle margin/Resources container/Resources padding/HBoxContainer")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
-layout_mode = 2
-
-[node name="Currency display" parent="CanvasLayer/UI/VBoxContainer" instance=ExtResource("1_kt1tu")]
 layout_mode = 2
 
 [node name="Content padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer"]
@@ -37,24 +39,92 @@ size_flags_stretch_ratio = 20.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding"]
 layout_mode = 2
-theme_override_constants/separation = -16
 
-[node name="Tab padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer"]
+[node name="Title margin" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="NinePatchRect" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Title margin"]
+layout_mode = 2
+texture = ExtResource("1_rar4c")
+patch_margin_left = 32
+patch_margin_bottom = 32
+
+[node name="Header padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Title margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 16
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Title margin/Header padding"]
+layout_mode = 2
+text = "Workshops"
+label_settings = ExtResource("2_4oi2o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Subtitle margin" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer"]
 layout_mode = 2
 
-[node name="Tab container" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Tab padding" node_paths=PackedStringArray("workshop_scene_container")]
+[node name="Resources container" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Subtitle margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Subtitle margin/Resources container"]
+layout_mode = 2
+texture = ExtResource("3_w753w")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+axis_stretch_horizontal = 1
+
+[node name="Resources padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Subtitle margin/Resources container"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 7
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 7
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Subtitle margin/Resources container/Resources padding"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Base button" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Subtitle margin" instance=ExtResource("5_w753w")]
+layout_mode = 2
+size_flags_horizontal = 8
+signal_on_button_pressed = "next_level_clicked"
+
+[node name="Submit text" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Subtitle margin/Base button/Text container" index="0"]
+text = "Next"
+
+[node name="Content container" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container"]
+layout_mode = 2
+theme_override_constants/separation = -16
+
+[node name="Tab padding" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 7
+
+[node name="Tab container" type="HBoxContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer/Tab padding" node_paths=PackedStringArray("workshop_scene_container")]
 z_index = 2
 layout_mode = 2
 theme_override_constants/separation = -16
 script = ExtResource("2_cmljf")
 tabDataList = Array[ExtResource("3_y0seh")]([ExtResource("4_iusj4"), ExtResource("5_5e252"), ExtResource("6_xa4ts")])
-workshop_scene_container = NodePath("../../Page container")
+workshop_scene_container = NodePath("../../Tab content container")
 
-[node name="Page container" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer"]
+[node name="Tab content container" type="MarginContainer" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Page container"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Content container/VBoxContainer/Tab content container"]
 layout_mode = 2
 texture = ExtResource("3_n2h7y")
 patch_margin_left = 8
@@ -62,14 +132,4 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Next level button" parent="CanvasLayer/UI/VBoxContainer" instance=ExtResource("2_x3sho")]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 2
-signal_on_button_pressed = "next_level_clicked"
-
-[node name="Submit text" parent="CanvasLayer/UI/VBoxContainer/Next level button/Text container" index="0"]
-text = " Next 
-battle"
-
-[editable path="CanvasLayer/UI/VBoxContainer/Next level button"]
+[editable path="CanvasLayer/UI/VBoxContainer/Content padding/VBoxContainer/Subtitle margin/Base button"]

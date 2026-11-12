@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://ct4mbgc4lue3s"]
+
+[ext_resource type="Script" uid="uid://mee8bqiuypbp" path="res://scripts/ui/components/ResourceDisplay.gd" id="1_2xmim"]
+[ext_resource type="Texture2D" uid="uid://cjfxyyravvdyp" path="res://sprites/UI_inset.png" id="1_u4vt4"]
+[ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="3_2xmim"]
+[ext_resource type="Texture2D" uid="uid://cfgylxr5ls1p0" path="res://sprites/UI_currency-icon.png" id="3_e5buc"]
+
+[node name="Resource display" type="MarginContainer" node_paths=PackedStringArray("resource_amount_label", "resource_icon")]
+script = ExtResource("1_2xmim")
+resource_amount_label = NodePath("HBoxContainer/Text margin/Currency amount")
+resource_icon = NodePath("HBoxContainer/Icon")
+
+[node name="Inset background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_u4vt4")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_e5buc")
+
+[node name="Text margin" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+
+[node name="Currency amount" type="Label" parent="HBoxContainer/Text margin"]
+layout_mode = 2
+text = "999"
+label_settings = ExtResource("3_2xmim")

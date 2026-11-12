@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://1a0dtola0qk5"
-path="res://.godot/imported/Dedicool.ttf-48a365e3afafd5a2db159d412d2cc0fb.fontdata"
+uid="uid://5w65m1td5gt"
+path="res://.godot/imported/Tiny5-Regular.ttf-f70ee88dc6b19c8e3182f6dc6090327f.fontdata"
 
 [deps]
 
-source_file="res://fonts/Dedicool.ttf"
-dest_files=["res://.godot/imported/Dedicool.ttf-48a365e3afafd5a2db159d412d2cc0fb.fontdata"]
+source_file="res://fonts/font-files/Tiny5-Regular.ttf"
+dest_files=["res://.godot/imported/Tiny5-Regular.ttf-f70ee88dc6b19c8e3182f6dc6090327f.fontdata"]
 
 [params]
 
