@@ -6,6 +6,7 @@ const ritual_scene : PackedScene = preload("res://scenes/ui-components/ritual_re
 @export var background_texture : TextureRect
 @export var outline_texture : TextureRect
 @export var troop_texture : TextureRect
+@export var tooltip : TooltipFactory
 
 var troop_type : TroopFactory.TROOP_TYPES
 var magic_type : RitualFactory.MAGIC
@@ -26,6 +27,7 @@ func setup(_troop_type : TroopFactory.TROOP_TYPES, _magic_type : RitualFactory.M
 	uses_left = uses
 	init_signals()
 	init_sprites()
+	init_tooltip()
 
 func init_signals():
 	mouse_entered.connect(on_mouse_enter)
@@ -34,6 +36,9 @@ func init_signals():
 func init_sprites():
 	background_texture.texture = RitualFactory.scrollPerMagic[magic_type]
 	troop_texture.texture = TroopFactory.troop_icons[troop_type]
+
+func init_tooltip():
+	tooltip.preloaded_tooltip = RitualTooltip.create_ritual_tooltip(self)
 
 func on_mouse_enter():
 	outline_texture.visible = true

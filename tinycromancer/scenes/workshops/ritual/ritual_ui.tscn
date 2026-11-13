@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bekjoqpn3qsuf"]
+[gd_scene load_steps=13 format=3 uid="uid://bekjoqpn3qsuf"]
 
 [ext_resource type="Texture2D" uid="uid://bjbmpmpte13d3" path="res://sprites/UI_arrow-button.png" id="1_j2n3w"]
 [ext_resource type="Script" uid="uid://6chrgvlisv6q" path="res://scripts/ui/workshops-scene/ritual-scene/RitualUI.gd" id="1_ubg6p"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6e7xn03vmum4" path="res://sprites/UI_arrow-button-hover.png" id="3_xcdyc"]
 [ext_resource type="Texture2D" uid="uid://dnvh8hl0gp612" path="res://sprites/UI_arrow-button-disable.png" id="4_ulgud"]
 [ext_resource type="Texture2D" uid="uid://dgxm4kvwutb21" path="res://sprites/UI_base-magic-icon.png" id="4_yeke0"]
+[ext_resource type="Texture2D" uid="uid://6ggr60c11jwk" path="res://sprites/UI_vertical-separator.png" id="5_35wal"]
 [ext_resource type="Texture2D" uid="uid://cjfxyyravvdyp" path="res://sprites/UI_inset.png" id="5_obarf"]
 [ext_resource type="Texture2D" uid="uid://d1cccl0gf1oxq" path="res://sprites/UI_blood-magic-icon.png" id="5_p6vkc"]
 [ext_resource type="LabelSettings" uid="uid://cmwa08oev84t" path="res://fonts/in-inset.tres" id="6_0idc0"]
@@ -86,6 +87,10 @@ layout_mode = 2
 texture = ExtResource("4_yeke0")
 stretch_mode = 3
 
+[node name="Separator" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
+layout_mode = 2
+texture = ExtResource("5_35wal")
+
 [node name="Blood magic icon container" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -95,6 +100,10 @@ layout_mode = 2
 texture = ExtResource("5_p6vkc")
 stretch_mode = 3
 
+[node name="Separator2" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
+layout_mode = 2
+texture = ExtResource("5_35wal")
+
 [node name="Dark magic icon container" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -103,6 +112,10 @@ size_flags_horizontal = 3
 layout_mode = 2
 texture = ExtResource("6_35wal")
 stretch_mode = 3
+
+[node name="Separator3" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
+layout_mode = 2
+texture = ExtResource("5_35wal")
 
 [node name="Unholy magic icon container" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
 layout_mode = 2
@@ -125,6 +138,10 @@ size_flags_horizontal = 3
 [node name="Default troop container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Default troop margin"]
 layout_mode = 2
 
+[node name="Separator" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
+layout_mode = 2
+texture = ExtResource("5_35wal")
+
 [node name="Blood troop margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -132,12 +149,20 @@ size_flags_horizontal = 3
 [node name="Blood troop container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Blood troop margin"]
 layout_mode = 2
 
+[node name="Separator2" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
+layout_mode = 2
+texture = ExtResource("5_35wal")
+
 [node name="Dark troop margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Dark troop container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Dark troop margin"]
 layout_mode = 2
+
+[node name="Separator3" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
+layout_mode = 2
+texture = ExtResource("5_35wal")
 
 [node name="Unholy troop margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
 layout_mode = 2

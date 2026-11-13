@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=3 uid="uid://0rjf0v8olwvh"]
+
+[ext_resource type="Script" uid="uid://b0ohcfuvmw4aj" path="res://scripts/ui/components/tooltips/RitualTooltip.gd" id="1_h6k5r"]
+[ext_resource type="Texture2D" uid="uid://uyv5tn0tqnw1" path="res://sprites/UI_tooltip-background.png" id="2_vxuom"]
+[ext_resource type="LabelSettings" uid="uid://cmwa08oev84t" path="res://fonts/in-inset.tres" id="3_gtvch"]
+[ext_resource type="Texture2D" uid="uid://bkl56jqhe3j5j" path="res://sprites/UI_troop-gunner-icon.png" id="4_xsr7v"]
+[ext_resource type="Texture2D" uid="uid://cucjh283fkpvy" path="res://sprites/UI_dark-magic-icon.png" id="5_6e003"]
+
+[node name="Ritual tooltip" type="MarginContainer" node_paths=PackedStringArray("troop_icon", "magic_icon", "magic_label", "cost_container", "uses_label")]
+offset_right = 144.0
+offset_bottom = 78.0
+script = ExtResource("1_h6k5r")
+troop_icon = NodePath("Padding/VBoxContainer/Troop Margin/Troop container/Troop icon")
+magic_icon = NodePath("Padding/VBoxContainer/Magic Margin/Magic container/Magic icon")
+magic_label = NodePath("Padding/VBoxContainer/Magic Margin/Magic container/Magic used")
+cost_container = NodePath("Padding/VBoxContainer/Cost Margin/Cost container/Cost margin/Cost container")
+uses_label = NodePath("Padding/VBoxContainer/Uses margin/Uses label")
+
+[node name="Background" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.6784314)
+layout_mode = 2
+texture = ExtResource("2_vxuom")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Padding" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Padding"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Troop Margin" type="MarginContainer" parent="Padding/VBoxContainer"]
+layout_mode = 2
+
+[node name="Troop container" type="HBoxContainer" parent="Padding/VBoxContainer/Troop Margin"]
+layout_mode = 2
+
+[node name="Troop type label" type="Label" parent="Padding/VBoxContainer/Troop Margin/Troop container"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Troop created:"
+label_settings = ExtResource("3_gtvch")
+vertical_alignment = 2
+
+[node name="Troop icon" type="TextureRect" parent="Padding/VBoxContainer/Troop Margin/Troop container"]
+layout_mode = 2
+texture = ExtResource("4_xsr7v")
+stretch_mode = 2
+
+[node name="Magic Margin" type="MarginContainer" parent="Padding/VBoxContainer"]
+layout_mode = 2
+
+[node name="Magic container" type="HBoxContainer" parent="Padding/VBoxContainer/Magic Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Padding/VBoxContainer/Magic Margin/Magic container"]
+layout_mode = 2
+size_flags_vertical = 5
+text = "Magic used:"
+label_settings = ExtResource("3_gtvch")
+vertical_alignment = 2
+
+[node name="Magic icon" type="TextureRect" parent="Padding/VBoxContainer/Magic Margin/Magic container"]
+layout_mode = 2
+texture = ExtResource("5_6e003")
+
+[node name="Magic used" type="Label" parent="Padding/VBoxContainer/Magic Margin/Magic container"]
+layout_mode = 2
+size_flags_vertical = 5
+text = "Dark magic"
+label_settings = ExtResource("3_gtvch")
+vertical_alignment = 2
+
+[node name="Cost Margin" type="MarginContainer" parent="Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Cost container" type="VBoxContainer" parent="Padding/VBoxContainer/Cost Margin"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="Padding/VBoxContainer/Cost Margin/Cost container"]
+layout_mode = 2
+size_flags_vertical = 5
+text = "Cost:"
+label_settings = ExtResource("3_gtvch")
+vertical_alignment = 2
+
+[node name="Cost margin" type="MarginContainer" parent="Padding/VBoxContainer/Cost Margin/Cost container"]
+layout_mode = 2
+
+[node name="Cost container" type="HBoxContainer" parent="Padding/VBoxContainer/Cost Margin/Cost container/Cost margin"]
+layout_mode = 2
+
+[node name="Uses margin" type="MarginContainer" parent="Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Uses label" type="Label" parent="Padding/VBoxContainer/Uses margin"]
+layout_mode = 2
+text = "1/1 Uses"
+label_settings = ExtResource("3_gtvch")
+horizontal_alignment = 2

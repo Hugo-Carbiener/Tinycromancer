@@ -1,10 +1,5 @@
 extends Node2D
 
-const default_magic_scroll : Texture2D = preload("res://sprites/UI_default-magic-scroll.png")
-const blood_magic_scroll : Texture2D = preload("res://sprites/UI_blood-magic-scroll.png")
-const dark_magic_scroll : Texture2D = preload("res://sprites/UI_dark-magic-scroll.png")
-const unholy_magic_scroll : Texture2D = preload("res://sprites/UI_unholy-magic-scroll.png")
-
 enum MAGIC {
 	DEFAULT,
 	BLOOD,
@@ -12,11 +7,25 @@ enum MAGIC {
 	UNHOLY,
 }
 
+var magicNames : Dictionary[MAGIC, String] = {
+	MAGIC.DEFAULT : "Base magic",
+	MAGIC.BLOOD : "Blood magic",
+	MAGIC.DARK : "Dark magic",
+	MAGIC.UNHOLY : "Unholy magic",
+}
+
 var scrollPerMagic : Dictionary[MAGIC, Texture2D] = {
-	MAGIC.DEFAULT : default_magic_scroll,
-	MAGIC.BLOOD : blood_magic_scroll,
-	MAGIC.DARK : dark_magic_scroll,
-	MAGIC.UNHOLY : unholy_magic_scroll,
+	MAGIC.DEFAULT : preload("res://sprites/UI_default-magic-scroll.png"),
+	MAGIC.BLOOD : preload("res://sprites/UI_blood-magic-scroll.png"),
+	MAGIC.DARK : preload("res://sprites/UI_dark-magic-scroll.png"),
+	MAGIC.UNHOLY : preload("res://sprites/UI_unholy-magic-scroll.png"),
+}
+
+var icons : Dictionary[MAGIC, Texture2D] = {
+	MAGIC.DEFAULT : preload("res://sprites/UI_base-magic-icon.png"),
+	MAGIC.BLOOD : preload("res://sprites/UI_blood-magic-icon.png"),
+	MAGIC.DARK : preload("res://sprites/UI_dark-magic-icon.png"),
+	MAGIC.UNHOLY : preload("res://sprites/UI_unholy-magic-icon.png"),
 }
 
 func get_random_ritual() -> RitualRecipe:
