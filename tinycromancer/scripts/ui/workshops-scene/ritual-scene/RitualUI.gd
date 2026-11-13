@@ -2,7 +2,6 @@ class_name RitualUI extends Control
 
 const RITUAL_PER_PAGE = 5
 
-
 @export_group("Troop summary components")
 @export var troop_summary_containers : Dictionary[RitualFactory.MAGIC, VBoxContainer]
 @export_group("Ritual recipes components")
@@ -17,15 +16,19 @@ var current_page : int
 
 func _ready() -> void:
 	current_page = 1
+	init_troop_summary()
 	init_page_indicators()
 	init_ritual_recipes(1)
 	init_buttons()
 
 func init_troop_summary():
-	for troop_types in UserData.troops:
-		var troop_amount_per_magic : Dictionary[RitualFactory.MAGIC, int]
-		
-		
+	for magic in RitualFactory.MAGIC.values():
+		for type in TroopFactory.TROOP_TYPES.values():
+			var troop_key = [type, magic]
+			if !UserData.troops.has(troop_key): continue
+			
+			var troop_summary = TroopSummary.create_troop_summary(type, UserData.troops.get(troop_key))
+			troop_summary_containers[magic].add_child(troop_summary)
 
 func init_page_indicators():
 	for i in range(get_page_amount()):

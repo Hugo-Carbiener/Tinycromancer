@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func build_level():
 	spend_rest_currency()
-	spawner.ally_troops = UserData.get_troops_without_magic()
+	spawner.ally_troops = UserData.troops
 	spawner.enemy_troops = set_enemy_troops()
 	spawner.spawn_troops()
 	
@@ -41,9 +41,9 @@ func spend_rest_currency():
 	SignalBus.resource_amount_updated.emit(ResourceManager.Resources.BASIC_SOUL, soul_amount, 0)
 	UserData.resources.set(ResourceManager.Resources.BASIC_SOUL, 0)
 
-func set_enemy_troops() -> Dictionary[TroopFactory.TROOP_TYPES, int]:
+func set_enemy_troops() -> Dictionary[Array, int]:
 	#TODO : améliorer avec les nouvelles troop
-	return {TroopFactory.TROOP_TYPES.ENEMY_BASE_TROOP : UserData.level_number * 10}
+	return {[TroopFactory.TROOP_TYPES.ENEMY_BASE_TROOP, RitualFactory.MAGIC.DEFAULT] : UserData.level_number * 10}
 
 func register_troop(troop : Troop):
 	match (troop.faction):

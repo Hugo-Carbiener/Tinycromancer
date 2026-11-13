@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cucjh283fkpvy" path="res://sprites/UI_dark-magic-icon.png" id="6_35wal"]
 [ext_resource type="Texture2D" uid="uid://ceeg54v3rejlb" path="res://sprites/UI_unholy-magic-icon.png" id="7_gkds4"]
 
-[node name="Ritual" type="MarginContainer" node_paths=PackedStringArray("ritual_recipe_container", "page_indicator_container", "previous_page_button", "next_page_button")]
+[node name="Ritual" type="MarginContainer" node_paths=PackedStringArray("troop_summary_containers", "ritual_recipe_container", "page_indicator_container", "previous_page_button", "next_page_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,6 +23,12 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 script = ExtResource("1_ubg6p")
+troop_summary_containers = {
+0: NodePath("HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Default troop margin/Default troop container"),
+1: NodePath("HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Blood troop margin/Blood troop container"),
+2: NodePath("HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Dark troop margin/Dark troop container"),
+3: NodePath("HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Unholy troop margin/Unholy troop container")
+}
 ritual_recipe_container = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Scroll list padding/Ritual recipe container")
 page_indicator_container = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Page indicator padding/Page indicator container")
 previous_page_button = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Previous page button")
@@ -147,7 +153,7 @@ size_flags_vertical = 10
 [node name="Right area margin" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 1.4
+size_flags_stretch_ratio = 1.6
 
 [node name="HBoxContainer" type="VBoxContainer" parent="HBoxContainer/Right area margin"]
 layout_mode = 2

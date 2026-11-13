@@ -3,8 +3,12 @@ extends Node
 var resources : Dictionary[ResourceManager.Resources, int]
 var level_number : int = 1
 var troops : Dictionary[Array, int] = {
-	[TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.DEFAULT] : 15,
-	[TroopFactory.TROOP_TYPES.GUNNER, RitualFactory.MAGIC.DEFAULT] : 5,
+	[TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.DEFAULT] : 50,
+	[TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.DARK] : 4000,
+	[TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.BLOOD] : 500,
+	[TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.UNHOLY] : 60,
+	[TroopFactory.TROOP_TYPES.GUNNER, RitualFactory.MAGIC.DARK] : 3,
+	[TroopFactory.TROOP_TYPES.GUNNER, RitualFactory.MAGIC.UNHOLY] : 2,
 }
 var ritual_recipes : Array[RitualRecipe] = [
 	RitualRecipe.create_ritual(TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.DEFAULT, {}, 1),

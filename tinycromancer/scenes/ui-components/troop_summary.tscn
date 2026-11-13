@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvqisxfn5k07"]
+[gd_scene load_steps=4 format=3 uid="uid://dvqisxfn5k07"]
 
+[ext_resource type="Script" uid="uid://bqy5m10s4q3l7" path="res://scripts/ui/components/TroopSummary.gd" id="1_8b6is"]
 [ext_resource type="Texture2D" uid="uid://bkl56jqhe3j5j" path="res://sprites/UI_troop-gunner-icon.png" id="1_h2rwe"]
 [ext_resource type="LabelSettings" uid="uid://iv4116vilm50" path="res://fonts/default.tres" id="2_8b6is"]
 
-[node name="Troop summary" type="MarginContainer"]
+[node name="Troop summary" type="MarginContainer" node_paths=PackedStringArray("icon", "amount")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -15,6 +16,9 @@ offset_right = 17.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_8b6is")
+icon = NodePath("HBoxContainer/Troop icon")
+amount = NodePath("HBoxContainer/Troop amount")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

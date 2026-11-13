@@ -1,7 +1,7 @@
 class_name Spawner extends Node2D
  
-var ally_troops : Dictionary[TroopFactory.TROOP_TYPES, int]
-var enemy_troops : Dictionary[TroopFactory.TROOP_TYPES, int]
+var ally_troops : Dictionary[Array, int]
+var enemy_troops : Dictionary[Array, int]
 @export_group("Components")
 @export var allies_spawn : Node2D
 @export var enemies_spawn : Node2D
@@ -61,11 +61,11 @@ func spawn_troops_from_faction(faction : CombatManager.FACTIONS):
 			troops = enemy_troops
 			spawn = enemies_spawn
 	
-	for troop_type in troops.keys():
-		var number_troops_of_type = troops[troop_type]
-		for i in range(number_troops_of_type):
-			var new_troop = TroopFactory.create_troop(troop_type, faction)
+	for troop_key in troops.keys():
+		var troup_amount = troops[troop_key]
+		for i in range(troup_amount):
+			var new_troop = TroopFactory.create_troop(troop_key[0], faction, troop_key[1])
 			spawn.add_child(new_troop)
-			determine_spawn_troop_position(new_troop, number_troops_of_type)
+			determine_spawn_troop_position(new_troop, troup_amount)
 			new_troop.setup()
 			current_troop_by_row += 1
