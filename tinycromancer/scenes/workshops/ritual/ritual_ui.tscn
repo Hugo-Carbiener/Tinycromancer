@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://bekjoqpn3qsuf"]
+[gd_scene load_steps=12 format=3 uid="uid://bekjoqpn3qsuf"]
 
 [ext_resource type="Texture2D" uid="uid://bjbmpmpte13d3" path="res://sprites/UI_arrow-button.png" id="1_j2n3w"]
 [ext_resource type="Script" uid="uid://6chrgvlisv6q" path="res://scripts/ui/workshops-scene/ritual-scene/RitualUI.gd" id="1_ubg6p"]
 [ext_resource type="Texture2D" uid="uid://ddor7mpktn7l5" path="res://sprites/UI_arrow-button-pressed.png" id="2_ubg6p"]
 [ext_resource type="Texture2D" uid="uid://6e7xn03vmum4" path="res://sprites/UI_arrow-button-hover.png" id="3_xcdyc"]
 [ext_resource type="Texture2D" uid="uid://dnvh8hl0gp612" path="res://sprites/UI_arrow-button-disable.png" id="4_ulgud"]
+[ext_resource type="Texture2D" uid="uid://dgxm4kvwutb21" path="res://sprites/UI_base-magic-icon.png" id="4_yeke0"]
 [ext_resource type="Texture2D" uid="uid://cjfxyyravvdyp" path="res://sprites/UI_inset.png" id="5_obarf"]
+[ext_resource type="Texture2D" uid="uid://d1cccl0gf1oxq" path="res://sprites/UI_blood-magic-icon.png" id="5_p6vkc"]
 [ext_resource type="LabelSettings" uid="uid://cmwa08oev84t" path="res://fonts/in-inset.tres" id="6_0idc0"]
+[ext_resource type="Texture2D" uid="uid://cucjh283fkpvy" path="res://sprites/UI_dark-magic-icon.png" id="6_35wal"]
+[ext_resource type="Texture2D" uid="uid://ceeg54v3rejlb" path="res://sprites/UI_unholy-magic-icon.png" id="7_gkds4"]
 
 [node name="Ritual" type="MarginContainer" node_paths=PackedStringArray("ritual_recipe_container", "page_indicator_container", "previous_page_button", "next_page_button")]
 anchors_preset = 15
@@ -14,6 +18,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 script = ExtResource("1_ubg6p")
 ritual_recipe_container = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Scroll list padding/Ritual recipe container")
 page_indicator_container = NodePath("HBoxContainer/Right area margin/HBoxContainer/Top right area margin/Scroll area container/Scroll list area/Scroll area content container/Page indicator padding/Page indicator container")
@@ -26,6 +34,115 @@ layout_mode = 2
 [node name="Left area margin" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left area margin"]
+layout_mode = 2
+
+[node name="Troop area margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="Troop area background inset" type="NinePatchRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin"]
+layout_mode = 2
+texture = ExtResource("5_obarf")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Troop area padding" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Troop area container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container"]
+layout_mode = 2
+text = "Troops"
+label_settings = ExtResource("6_0idc0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icons container" type="HBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Base magic icon container" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Base magic icon" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container/Base magic icon container"]
+layout_mode = 2
+texture = ExtResource("4_yeke0")
+stretch_mode = 3
+
+[node name="Blood magic icon container" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Blood magic icon" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container/Blood magic icon container"]
+layout_mode = 2
+texture = ExtResource("5_p6vkc")
+stretch_mode = 3
+
+[node name="Dark magic icon container" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dark magic icon" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container/Dark magic icon container"]
+layout_mode = 2
+texture = ExtResource("6_35wal")
+stretch_mode = 3
+
+[node name="Unholy magic icon container" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Unholy magic icon" type="TextureRect" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Icons container/Unholy magic icon container"]
+layout_mode = 2
+texture = ExtResource("7_gkds4")
+stretch_mode = 3
+
+[node name="Troops columns container" type="HBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Default troop margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Default troop container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Default troop margin"]
+layout_mode = 2
+
+[node name="Blood troop margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Blood troop container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Blood troop margin"]
+layout_mode = 2
+
+[node name="Dark troop margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Dark troop container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Dark troop margin"]
+layout_mode = 2
+
+[node name="Unholy troop margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Unholy troop container" type="VBoxContainer" parent="HBoxContainer/Left area margin/VBoxContainer/Troop area margin/Troop area padding/Troop area container/Troops columns container/Unholy troop margin"]
+layout_mode = 2
+
+[node name="Bottom left margin" type="MarginContainer" parent="HBoxContainer/Left area margin/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
 
 [node name="Right area margin" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -40,8 +157,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="Scroll area container" type="HBoxContainer" parent="HBoxContainer/Right area margin/HBoxContainer/Top right area margin"]

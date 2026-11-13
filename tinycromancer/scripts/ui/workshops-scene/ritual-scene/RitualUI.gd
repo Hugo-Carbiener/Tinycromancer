@@ -2,7 +2,10 @@ class_name RitualUI extends Control
 
 const RITUAL_PER_PAGE = 5
 
-@export_group("Components")
+
+@export_group("Troop summary components")
+@export var troop_summary_containers : Dictionary[RitualFactory.MAGIC, VBoxContainer]
+@export_group("Ritual recipes components")
 @export var ritual_recipe_container : HBoxContainer
 @export var page_indicator_container : HBoxContainer
 @export var previous_page_button : TextureButton
@@ -17,6 +20,12 @@ func _ready() -> void:
 	init_page_indicators()
 	init_ritual_recipes(1)
 	init_buttons()
+
+func init_troop_summary():
+	for troop_types in UserData.troops:
+		var troop_amount_per_magic : Dictionary[RitualFactory.MAGIC, int]
+		
+		
 
 func init_page_indicators():
 	for i in range(get_page_amount()):

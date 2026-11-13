@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://duq4e2d2wmcso" path="res://scripts/ui/workshops-scene/TabData.gd" id="3_y0seh"]
 [ext_resource type="Resource" uid="uid://6ymk7jjjdvdf" path="res://resources/RitualTabData.tres" id="4_iusj4"]
 [ext_resource type="Resource" uid="uid://c2ejtohg4n6ki" path="res://resources/ShopTabData.tres" id="5_5e252"]
-[ext_resource type="PackedScene" uid="uid://bpx0xhr08iwlb" path="res://scenes/ui-components/base-texture-button.tscn" id="5_w753w"]
+[ext_resource type="PackedScene" uid="uid://bpx0xhr08iwlb" path="res://scenes/ui-components/base_texture_button.tscn" id="5_w753w"]
 [ext_resource type="Resource" uid="uid://mre0xd1ystrs" path="res://resources/WarcampTabData.tres" id="6_xa4ts"]
 
 [node name="Workshops" type="Node2D"]

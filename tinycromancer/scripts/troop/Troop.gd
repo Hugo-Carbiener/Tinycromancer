@@ -4,10 +4,13 @@ class_name Troop extends CharacterBody2D
 @export var combat_module : CombatModule
 @export var movement_module : MovementModule
 @export var animation_module : AnimationModule
-@export var role : TroopFactory.TROOP_TYPES
+@export var type : TroopFactory.TROOP_TYPES
+@export_group("Static values")
+@export var icon : Texture2D
 
 var target : Troop
 var faction : CombatManager.FACTIONS
+var magic : RitualFactory.MAGIC
 var current_state : State = IdleState.new(self, "idle")
 var state_machine : StateMachine = StateMachine.new()
 

@@ -1,13 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ba2gy4ycnut1o"]
+[gd_scene load_steps=5 format=3 uid="uid://ba2gy4ycnut1o"]
 
 [ext_resource type="Script" uid="uid://d2hdk3l16q6if" path="res://scripts/ritual/RitualRecipe.gd" id="1_p7cbh"]
 [ext_resource type="Texture2D" uid="uid://ko1016hjb5dv" path="res://sprites/UI_blood-magic-scroll.png" id="2_0nm10"]
 [ext_resource type="Texture2D" uid="uid://c7po832lsiski" path="res://sprites/UI_scroll-outline.png" id="3_6g7rv"]
-[ext_resource type="Texture2D" uid="uid://bjsnk6i1rqmcw" path="res://sprites/assets_idle.png" id="4_trjjm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1e5dg"]
-atlas = ExtResource("4_trjjm")
-region = Rect2(0, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://8yoh1bs34ymi" path="res://sprites/UI_troop-base-icon.png" id="4_p7cbh"]
 
 [node name="Ritual recipe" type="MarginContainer" node_paths=PackedStringArray("background_texture", "outline_texture", "troop_texture")]
 anchors_preset = 8
@@ -24,7 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_p7cbh")
 background_texture = NodePath("Scroll background")
 outline_texture = NodePath("Scroll outline")
-troop_texture = NodePath("Troop margin/Troop sprite")
+troop_texture = NodePath("Troop sprite")
 
 [node name="Scroll background" type="TextureRect" parent="."]
 layout_mode = 2
@@ -37,12 +33,10 @@ layout_mode = 2
 texture = ExtResource("3_6g7rv")
 stretch_mode = 2
 
-[node name="Troop margin" type="MarginContainer" parent="."]
+[node name="Troop sprite" type="TextureRect" parent="."]
 layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Troop sprite" type="TextureRect" parent="Troop margin"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_1e5dg")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_p7cbh")
 stretch_mode = 3
 flip_h = true

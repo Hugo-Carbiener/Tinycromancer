@@ -25,25 +25,25 @@ func _ready() -> void:
 
 func build_level():
 	spend_rest_currency()
-	spawner.ally_troops = UserData.troops
+	spawner.ally_troops = UserData.get_troops_without_magic()
 	spawner.enemy_troops = set_enemy_troops()
 	spawner.spawn_troops()
 	
 func spend_rest_currency():
-	var soul_amount = UserData.troops[TroopFactory.TROOP_TYPES.BASE_TROOP]
+	var soul_amount = UserData.resources[ResourceManager.Resources.BASIC_SOUL]
 	if soul_amount <= 0: return
-	
-	if not UserData.troops.has(TroopFactory.TROOP_TYPES.BASE_TROOP):
-		UserData.troops[TroopFactory.TROOP_TYPES.BASE_TROOP] = soul_amount
+
+	var base_troop_key = [TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.DEFAULT]
+	if not UserData.troops.has(base_troop_key):
+		UserData.troops[base_troop_key] = soul_amount
 	else:
-		UserData.troops[TroopFactory.TROOP_TYPES.BASE_TROOP] += soul_amount
+		UserData.troops[base_troop_key] += soul_amount
 	SignalBus.resource_amount_updated.emit(ResourceManager.Resources.BASIC_SOUL, soul_amount, 0)
 	UserData.resources.set(ResourceManager.Resources.BASIC_SOUL, 0)
 
-func set_enemy_troops() -> Dictionary[TroopFactory.ENEMY_TROOP_TYPES, int]:
+func set_enemy_troops() -> Dictionary[TroopFactory.TROOP_TYPES, int]:
 	#TODO : améliorer avec les nouvelles troop
-	var enemy_troops : Dictionary[TroopFactory.ENEMY_TROOP_TYPES, int] = {TroopFactory.ENEMY_TROOP_TYPES.BASE_TROOP : UserData.level_number * 10}
-	return enemy_troops
+	return {TroopFactory.TROOP_TYPES.ENEMY_BASE_TROOP : UserData.level_number * 10}
 
 func register_troop(troop : Troop):
 	match (troop.faction):
@@ -145,11 +145,10 @@ func win_fight():
 	take_death_into_account()
 	
 func take_death_into_account():
-	var alive_troops_map : Dictionary[TroopFactory.TROOP_TYPES, int] = {}
+	var alive_troops_map : Dictionary[Array, int] = {}
 	for alive_troop in get_alive_opponents(FACTIONS.ENEMIES):
-		if not alive_troops_map.has(alive_troop.role):
-			alive_troops_map[alive_troop.role] = 0
-		alive_troops_map[alive_troop.role] +=1
+		var troop_key = [alive_troop.type, alive_troop.magic]
+		alive_troops_map.set(troop_key, alive_troops_map.get_or_add(troop_key, 0) + 1)
 	UserData.troops = alive_troops_map
 	
 func loose_fight():

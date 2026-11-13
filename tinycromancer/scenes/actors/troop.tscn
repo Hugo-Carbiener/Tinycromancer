@@ -1,6 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://pwbbiwor0jd8"]
+[gd_scene load_steps=36 format=3 uid="uid://pwbbiwor0jd8"]
 
 [ext_resource type="Script" uid="uid://bbgwe3ab56xsc" path="res://scripts/troop/Troop.gd" id="1_k10xu"]
+[ext_resource type="Texture2D" uid="uid://8yoh1bs34ymi" path="res://sprites/UI_troop-base-icon.png" id="2_h1jwv"]
 [ext_resource type="Texture2D" uid="uid://dtkvcjf0eijw8" path="res://sprites/assets_death.png" id="2_khboo"]
 [ext_resource type="Texture2D" uid="uid://c8p6spko4lhpl" path="res://sprites/assets_hit.png" id="3_0u52p"]
 [ext_resource type="Script" uid="uid://ci62kk8hja3u5" path="res://scripts/troop/AnimationModule.gd" id="3_2lkha"]
@@ -208,6 +209,7 @@ script = ExtResource("1_k10xu")
 combat_module = NodePath("CombatModule")
 movement_module = NodePath("MovementModule")
 animation_module = NodePath("Animated sprite")
+icon = ExtResource("2_h1jwv")
 
 [node name="Animated sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2lkha")

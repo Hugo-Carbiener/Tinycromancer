@@ -1,7 +1,7 @@
 class_name Spawner extends Node2D
  
-@export var ally_troops : Dictionary[TroopFactory.TROOP_TYPES, int]
-@export var enemy_troops : Dictionary[TroopFactory.ENEMY_TROOP_TYPES, int]
+var ally_troops : Dictionary[TroopFactory.TROOP_TYPES, int]
+var enemy_troops : Dictionary[TroopFactory.TROOP_TYPES, int]
 @export_group("Components")
 @export var allies_spawn : Node2D
 @export var enemies_spawn : Node2D

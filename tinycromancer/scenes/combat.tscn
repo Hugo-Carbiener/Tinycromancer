@@ -7,7 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://cihjvaf0nbdvx" path="res://fonts/title.tres" id="5_vcae8"]
 [ext_resource type="LabelSettings" uid="uid://cwe2mox0o7tm" path="res://fonts/subtitle.tres" id="6_osi8t"]
 [ext_resource type="Script" uid="uid://fc3m8qimcpgh" path="res://scripts/ui/combat-scene/UI.gd" id="7_4gnb8"]
-[ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui-components/large-texture-button.tscn" id="7_8we11"]
+[ext_resource type="PackedScene" uid="uid://b5ghoydk6ffix" path="res://scenes/ui-components/large_texture_button.tscn" id="7_8we11"]
 [ext_resource type="Texture2D" uid="uid://dka40be4qxpvw" path="res://sprites/assets_lich-idle.png" id="11_hmy61"]
 [ext_resource type="Texture2D" uid="uid://8haheuix2qg8" path="res://sprites/assets_lich-spell.png" id="12_0qyji"]
 [ext_resource type="Texture2D" uid="uid://bhsl3yry2qeex" path="res://sprites/assets_lich-spell-2.png" id="13_xkyey"]
@@ -190,6 +190,7 @@ script = ExtResource("3_aic3r")
 ally_troops = Dictionary[int, int]({
 0: 15
 })
+enemy_troops = null
 allies_spawn = NodePath("../Allies spawn")
 enemies_spawn = NodePath("../Enemiess spawn")
 
