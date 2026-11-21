@@ -1,6 +1,6 @@
 [gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cd5lfdvv756q4"]
 
-[ext_resource type="FontFile" uid="uid://1a0dtola0qk5" path="res://fonts/Dedicool.ttf" id="1_6c8yo"]
+[ext_resource type="FontFile" uid="uid://1a0dtola0qk5" path="res://fonts/font-files/Dedicool.ttf" id="1_6c8yo"]
 
 [resource]
 base_font = ExtResource("1_6c8yo")

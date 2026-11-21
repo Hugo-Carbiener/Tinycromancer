@@ -30,19 +30,20 @@ func build_level():
 	spawner.spawn_troops()
 	
 func spend_rest_currency():
-	if UserData.souls <= 0: return
-	
-	if not UserData.troops.has(TroopFactory.ROLES.BASE_TROOP):
-		UserData.troops[TroopFactory.ROLES.BASE_TROOP] = UserData.souls
+	var soul_amount = UserData.resources[ResourceManager.Resources.BASIC_SOUL]
+	if soul_amount <= 0: return
+
+	var base_troop_key = [TroopFactory.TROOP_TYPES.BASE_TROOP, RitualFactory.MAGIC.DEFAULT]
+	if not UserData.troops.has(base_troop_key):
+		UserData.troops[base_troop_key] = soul_amount
 	else:
-		UserData.troops[TroopFactory.ROLES.BASE_TROOP] += UserData.souls
-	SignalBus.currency_amount_updated.emit(UserData.souls, 0)
-	UserData.souls = 0
-		
-func set_enemy_troops() -> Dictionary[TroopFactory.ROLES, int]:
+		UserData.troops[base_troop_key] += soul_amount
+	SignalBus.resource_amount_updated.emit(ResourceManager.Resources.BASIC_SOUL, soul_amount, 0)
+	UserData.resources.set(ResourceManager.Resources.BASIC_SOUL, 0)
+
+func set_enemy_troops() -> Dictionary[Array, int]:
 	#TODO : améliorer avec les nouvelles troop
-	var enemy_troops : Dictionary[TroopFactory.ROLES, int] = {TroopFactory.ROLES.ENEMY_BASE_TROOP : UserData.level_number * 10}
-	return enemy_troops
+	return {[TroopFactory.TROOP_TYPES.ENEMY_BASE_TROOP, RitualFactory.MAGIC.DEFAULT] : UserData.level_number * 10}
 
 func register_troop(troop : Troop):
 	match (troop.faction):
@@ -134,19 +135,20 @@ func is_back_to_base(alive_troops : Array[Troop]):
 	return true
 
 func win_fight():
-	SignalBus.currency_amount_updated.emit(UserData.souls, UserData.souls + enemies.size())
-	UserData.souls += enemies.size()
+	var soul_amount = UserData.resources[ResourceManager.Resources.BASIC_SOUL]
+	var new_soul_amount = UserData.resources[ResourceManager.Resources.BASIC_SOUL] + enemies.size()
+	SignalBus.resource_amount_updated.emit(ResourceManager.Resources.BASIC_SOUL,  soul_amount, new_soul_amount)
+	UserData.resources.set(ResourceManager.Resources.BASIC_SOUL, new_soul_amount)
 	await lich_manager.on_fight_win()
 	SignalBus.on_win.emit()
 	UserData.level_number +=1
 	take_death_into_account()
 	
 func take_death_into_account():
-	var alive_troops_map : Dictionary[TroopFactory.ROLES, int] = {}
+	var alive_troops_map : Dictionary[Array, int] = {}
 	for alive_troop in get_alive_opponents(FACTIONS.ENEMIES):
-		if not alive_troops_map.has(alive_troop.role):
-			alive_troops_map[alive_troop.role] = 0
-		alive_troops_map[alive_troop.role] +=1
+		var troop_key = [alive_troop.type, alive_troop.magic]
+		alive_troops_map.set(troop_key, alive_troops_map.get_or_add(troop_key, 0) + 1)
 	UserData.troops = alive_troops_map
 	
 func loose_fight():

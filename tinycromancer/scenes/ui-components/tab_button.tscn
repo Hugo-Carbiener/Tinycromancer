@@ -47,7 +47,7 @@ toggle_mode = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 2
+theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 14
 
 [node name="Content container" type="HBoxContainer" parent="Button content padding"]

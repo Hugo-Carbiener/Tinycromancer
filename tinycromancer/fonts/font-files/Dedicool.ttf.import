@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://1a0dtola0qk5"
-path="res://.godot/imported/Dedicool.ttf-48a365e3afafd5a2db159d412d2cc0fb.fontdata"
+path="res://.godot/imported/Dedicool.ttf-be0cb749c2764c9db578684bf5ad6e5d.fontdata"
 
 [deps]
 
-source_file="res://fonts/Dedicool.ttf"
-dest_files=["res://.godot/imported/Dedicool.ttf-48a365e3afafd5a2db159d412d2cc0fb.fontdata"]
+source_file="res://fonts/font-files/Dedicool.ttf"
+dest_files=["res://.godot/imported/Dedicool.ttf-be0cb749c2764c9db578684bf5ad6e5d.fontdata"]
 
 [params]
 

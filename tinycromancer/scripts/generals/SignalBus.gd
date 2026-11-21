@@ -10,5 +10,5 @@ signal next_level_clicked
 signal shop_clicked
 
 # ui signals
-signal currency_amount_updated
+signal resource_amount_updated
 signal tab_clicked
